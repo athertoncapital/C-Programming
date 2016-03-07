@@ -1,0 +1,51 @@
+String s = "";
+for (i=0; i<100; i++)
+  s = s + token[i];
+
+/*----------------------------*/
+char *s = malloc(1);
+s[0] = '\0';
+for (i=0; i<100; i++) {
+  char *t = malloc(strlen(s)+strlen(token[i])+1);
+    sprintf(t, "%s%s", s, token[i]);
+      free(s);
+        s = t;
+	}
+/*----------------------------*/
+Str *s = StrNew();
+for (i=0; i<100; i++) {
+  StrAppend(s, token[i]);
+  }
+
+/*----------------------------*/
+typedef struct Str {
+  int len, size;
+    char *s;
+    };
+
+Str *StrNew();
+void StrAppend(Str *str, char *s);
+
+Str *StrNew() {
+  Str *str = malloc(sizeof(Str));
+    str->s = malloc(1);
+      str->s[0] = '\0';
+        str->len = 0;
+	  str->size = 1;
+	  }
+
+void StrAppend(Str *str, char *s) {
+  int newLen = str->len + strlen(s);
+    if (newLen+1 > str->size) {
+        int newSize = max(str->size*2, newLen+1);
+	    char *t = malloc(newSize);
+	        sprintf(t, "%s%s", str->s, s);
+		    free(str->s);
+		        str->s = t;
+			    str->len = newLen;
+			        str->size = newSize;
+				  } else {
+				      strcat(&str->s[str->len], s);
+				          str->len += strlen(s);
+					    }
+					    }
