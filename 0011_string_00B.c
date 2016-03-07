@@ -10,8 +10,8 @@ int main(void)
   wchar_t *str1=L"Hi! How's going"; 
   printf("str1=%ls\n", str1); // str1
   printf("wcslen(str1)=%d\n", wcslen(str1)); // wcslen(str1)=5
-  printf("wcschr(str1,%lc)=%d\n", L'Good!', wcschr(str1, L'Good!')); // wcschr(str1,好)=4206648
-  printf("wcswcs(str1,%ls)=%d\n", L"How's going", wcsstr(str1, L"How's going")); // wcswcs(str1,你好)=4206646
+  printf("wcschr(str1,%lc)=%d\n", L'Good!', wcschr(str1, L'Good!')); // wcschr(str1,Good!)=4206648
+  printf("wcswcs(str1,%ls)=%d\n", L"How's going?", wcsstr(str1, L"How's going")); 
   printf("wcsspn(str1,aeiou)=%d\n", wcsspn(str1, L"aeiou")); // wcsspn(str1,aeiou)=0
   printf("wcsspn(str1,EFGH)=%d\n", wcsspn(str1, L"EFGH")); // wcsspn(str1,EFGH)=1
   printf("address(str1)=%p\n", str1); // address(str1)=00403030
