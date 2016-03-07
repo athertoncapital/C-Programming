@@ -1,2 +1,5 @@
 Reference:
-http://www.cplusplus.com/reference/
+[1] http://www.cplusplus.com/reference/
+
+[2] An Introduction to Parallel Programming by Peter Pacheco
+https://www.cs.usfca.edu/~peter/ipp/
