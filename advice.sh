@@ -1,2 +1,2 @@
 #! /usr/bin/awk -f
-BEGIN { print "Don’t Panic!" }
+BEGIN { print "the quick brwon fox jump over the lazy dog" }
