@@ -16,7 +16,7 @@ int main()
   show(A, 10);
 
   cout << "Testing Case B"
-       << SENIOR << " and 10.\n";
+       << B << " and 10.\n";
   show(B, 10);
 
 
