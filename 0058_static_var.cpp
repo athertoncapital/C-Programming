@@ -12,8 +12,7 @@ int main()
     printStatic();
   for (int count = 0; count < 5; count++)
     print();
-  for (int count = 0; count < 5; count++)
-    printconst();
+
   return 0;
 }
 void print()
