@@ -23,30 +23,30 @@ void main (float **a, int n, float wr[], float wi[])
 	if ((float)(fabs(a[l][l-1]) + s) == s) break;
       }
       x=a[nn][nn];
-      if (l == nn) {
+      if (l == nn) {//The first root found.
 	wr[nn]=x+t;
 	wi[nn--]=0.0;
       } else {
 	y=a[nn-1][nn-1];
 	w=a[nn][nn-1]*a[nn-1][nn];
-	if (l == (nn-1)) {
+	if (l == (nn-1)) {//THe second root found.
 	  p=0.5*(y-x);
 	  q=p*p+w;
 	  z=sqrt(fabs(q));
 	  x += t;
-	  if (q >= 0.0) {
+	  if (q >= 0.0) {//a real pair
 	    z=p+SIGN(z,p);
 	    wr[nn-1]=wr[nn]=x+z;
 	    if (z) wr[nn]=x-w/z;
 	    wi[nn-1]=wi[nn]=0.0;
-	  } else {
+	  } else {//a complex pair
 	    wr[nn-1]=wr[nn]=x+p;
 	    wi[nn-1]= -(wi[nn]=z);
 	  }
 	  nn -= 2;
 	} else {
-	  if (its == 30) nrerror("Too many iterations in hqr");
-	  if (its == 10 || its == 20) {
+	  if (its == 30) nrerror("Error: THere are too many iterations...");
+	  if (its == 10 || its == 20) {//for shift
 	    t += x;
 	    for (;i<=nn;i++) a[i][i] -= x;
 	    s=fabs(a[nn][nn-1])+fabs(a[nn-1][nn-2]);
