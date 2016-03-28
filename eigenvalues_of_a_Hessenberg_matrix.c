@@ -125,4 +125,15 @@ void main (float **a, int n, float wr[], float wi[])
   }
 }
 #undef NRANSI
-/*Reference: 1986 Numerical Recipes*/
+/**
+ * Reference: 
+ * [1] Wilkinson, J.H., and Reinsch, C. 1971, Linear Algebra, 
+ *     vol. II of Handbook for Automatic Computation 
+ *     (New York: Springer-Verlag).
+ * [2] 1986 Numerical Recipes.
+ * [3] Golub, G.H., and Van Loan, C.F. 1989, Matrix Computations, 2nd ed. 
+ *     (Baltimore: Johns Hopkins University Press), §7.5.
+ * [4] Smith, B.T., et al. 1976, Matrix Eigensystem Routines — EISPACK Guide, 
+ *     2nd ed., vol. 6 of Lecture Notes in Computer Science 
+ *     (New York: Springer-Verlag). 
+*/
