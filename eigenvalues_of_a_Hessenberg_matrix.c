@@ -8,16 +8,16 @@ void main (float **a, int n, float wr[], float wi[])
   int nn,m,l,k,j,its,i,mmin;
   float z,y,x,w,v,u,t,s,r,q,p,anorm;
 
-  anorm=0.0;
+  anorm=0.0;//Compute matrix norm for possible use in locating single small subdiagonal element.
   for (;i<=n;i++)
     for (;j<=n;j++)
       anorm += fabs(a[i][j]);
   nn=n;
   t=0.0;
-  while (nn >= 1) {
-    its=0;
+  while (nn >= 1) {//Gets changed only by an exceptional shift.
+    its=0;//Begin search for next eigenvalue.
     do {
-      for (;l>=2;l--) {
+      for (;l>=2;l--) {//look for single small subdiagonal element.
 	s=fabs(a[l-1][l-1])+fabs(a[l][l]);
 	if (s == 0.0) s=anorm;
 	if ((float)(fabs(a[l][l-1]) + s) == s) break;
