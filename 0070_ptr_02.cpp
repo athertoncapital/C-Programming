@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+//Reference CS420 Lecture Note, David Galles
 class A
 {
 public:
