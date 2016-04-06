@@ -6,5 +6,5 @@ int Add(int a, int b)
       a = a ^ b;
       b = c << 1;
     }
-  return x;
+  return a;
 }

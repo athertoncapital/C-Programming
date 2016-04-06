@@ -1,5 +1,5 @@
 #include <stdio.h>
-//Reference CS420 Lecture Note, David Galles
+//Reference: CS420 David Galles Lecture Notes 
 class A
 {
 public:
