@@ -1,0 +1,11 @@
+int digitCts(int k, int n) {
+  int[10] record;
+  Arrays.fill(record,0);
+  for (int i=0;i<=n;i++){
+    String temp = Integer.toString(i);
+    for (int j=0;j < temp.length();j++){
+      int ind = (int) (temp.charAt(j)-'0');
+      record[ind]++;
+    }
+  }
+  return record[k];  
