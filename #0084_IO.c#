@@ -1,0 +1,43 @@
+#include<stdio.h>
+#include<stdbool.h>
+#include<cs50.h>
+#include<string.h>
+int main(int argc, char* argv[]){
+  //check whether there is only one cmd lined argument
+  if(argc !=2)
+    {
+      printf("Usage: %s [name of document]\n", argv[0]);
+      return 1;
+    }
+  //open a new doc
+  FILE* fp = fopen(argv[1], "w");
+  //ensure for successful open
+  if (fp == NULL)//or the machine is out of memory
+    {
+      printf("Could not create %s\n", argv[1]);
+      return 2;
+    }
+  //get text from user and save to file
+  while(true)
+    {
+      //get text from user
+      printf("Enter a new line of text (or \"quit\"):\n");
+      string input = GetString();//from cs50.h
+      //if user wants to quit
+      if (input !=NULL && strcmp(input, "quit")==0)
+	{
+	  free(input);
+	  break;
+	}
+      //or if user wants to enter input
+      else if (input!=NULL)
+	{
+	  fputs(input, fp);
+	  fputs("\n", fp);
+	  printf("Hi there!\n\n");
+	  free(input);
+	}
+      
+		
+    }
+}
