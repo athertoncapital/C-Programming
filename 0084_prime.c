@@ -9,7 +9,6 @@ int main()
 
   if ( n >= 1 )
     {
-      printf("First %d prime numbers are :\n",n);
       printf("2\n");
     }
 
