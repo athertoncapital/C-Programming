@@ -1,18 +1,0 @@
-Script started on Thu Sep 17 10:17:04 2015
-[?1034hbash-3.2$ exitjava Earthquakec Earthquake.java
-bash-3.2$ javac Earthquake.java[C[C[C[C[C[C[C[C[C[Cexit[Kjava Earthquake
-Enter a magnitude on the Richter scale: 
-8.2
-Most structures falls
-bash-3.2$ java Earthquake
-Enter a magnitude on the Richter scale: 
--3.0
-Negative numbers are not valid
-bash-3.2$ java Earthquake
-Enter a magnitude on the Richter scale: 
-4.5
-Damage to poorly constructed buildings
-bash-3.2$ eit[K[Kxit
-exit
-
-Script done on Thu Sep 17 10:17:28 2015

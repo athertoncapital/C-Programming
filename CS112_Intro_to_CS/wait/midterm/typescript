@@ -1,35 +1,0 @@
-Script started on Tue Oct 27 11:18:53 2015
-[?1034hbash-3.2$ exitjava Convertc Convert.java
-bash-3.2$ javac Convert.java[C[C[C[C[C[C[C[C[C[Cexit[Kjava Convert
-Enter the number of seconds: 8765
-0 days
-2 hours
-26 minutes
-5.0 seconds
-bash-3.2$ java Convert
-Enter the number of seconds: 2939
-0 days
-1 hours
-49 minutes
-59.0 seconds
-bash-3.2$ java Convert
-Enter the number of seconds: 567
-0 days
-0 hours
-9 minutes
-27.0 seconds
-bash-3.2$ java Convertc Convert.java[C[C[C[C[C[C[C[C[C[Cexit[Kjava Convertc Convert.java[C[C[C[C[C[C[C[C[C[Cexit[Kjava Convertc Convert.java[C[C[C[C[C[C[C[C[C[Cexit[Kjava AccountTestc AccountTest.java
-bash-3.2$ javac AccountTest.java[C[C[C[C[C[C[C[C[C[C[C[C[C[C[10P Convertc Convert.java[C[C[C[C[C[C[C[C[C[Cexit[Kjava Convertc Convert.java[C[C[C[C[C[C[C[C[C[Cexit[Kjava Convertc Convert.java[C[C[C[C[C[C[C[C[C[Cexit[Kjava AccountTest
-Account id: 10000 
- Person: First Name: Sue, Last Name: Smith, Age: 45
-
-Exception while creating Person object p2: Age must be positive
-First Name: Smith, Last Name: Sue, Age: 45
-
-Account id: 10001 
- Person: First Name: Zoe, Last Name: Smith, Age: 19
-
-bash-3.2$ exit
-exit
-
-Script done on Tue Oct 27 11:19:42 2015

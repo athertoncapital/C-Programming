@@ -1,13 +1,0 @@
-Script started on Thu Oct 15 11:00:24 2015
-[?1034hbash-3.2$ exitjavac PrintTriangle.java[C[C[C[C[C[C[C[C[C[Cexit[Kjavac PrintTriangle.java
-bash-3.2$ javac PrintTriangle.java[C[C[C[C[C[C[C[C[C[Cexit[Kjavac PrintTriangle.java[C[C[C[C[C[C[C[C[C[Cexit[Kjava PrintTriangle
-Enter the side of the triangle to draw: 5
-*
-**
-***
-****
-*****
-bash-3.2$ exit
-exit
-
-Script done on Thu Oct 15 11:00:34 2015

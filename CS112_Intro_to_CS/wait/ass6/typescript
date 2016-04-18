@@ -1,12 +1,0 @@
-Script started on Tue Dec  8 23:36:35 2015
-[?1034hbash-3.2$ exitjava CommandLine  -1.5 1[K[K[K[K[K[K[K[K.jav[C[C[C[Cac CommandLine.java[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
-bash-3.2$ java CommandLine
-0
-bash-3.2$ java CommandLine 1 2 3 a
-Not a legal number! Usage: java CommandLine <double>
-bash-3.2$ java CommandLine 1 2 3 4
-The average of 4 numbers is 2.500000 
-bash-3.2$ exit
-exit
-
-Script done on Tue Dec  8 23:38:07 2015

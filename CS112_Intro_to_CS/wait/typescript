@@ -1,11 +1,0 @@
-Script started on Thu Sep 24 10:07:34 2015
-[?1034hbash-3.2$ exitjava mainc main.java
-bash-3.2$ javac main.java[C[C[C[C[C[C[C[C[C[Cexit[Kjava main
-0 1 2 3 
-1 2 3 4 
-2 3 4 5 
-3 4 5 6 
-bash-3.2$ java mainc main.java[C[C[C[C[C[C[C[C[C[Cexit[K
-exit
-
-Script done on Thu Sep 24 10:07:43 2015
