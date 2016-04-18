@@ -1,0 +1,20 @@
+public class Team 
+{  
+    private String name; 
+    private int score1;
+    private int score2;
+    private int score3;
+    public Team( int name ) 
+    { 
+	if ( initialBalance > 0.0 ) 
+	    balance = initialBalance; 
+    } 
+    public void credit( double amount ) 
+    { 
+	balance = balance + amount; // add amount to balance 
+    } 
+    public double getBalance() 
+    {  
+	return balance; 
+    }  
+} // end class Team 

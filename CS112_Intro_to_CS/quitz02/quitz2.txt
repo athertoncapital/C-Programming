@@ -1,0 +1,13 @@
+Script started on Tue Sep  1 11:29:12 2015
+[?1034hbash-3.2$ javac quitz02.java
+bash-3.2$ java quitz02
+Enter enter a number of your money in cents: 456
+4 dollars
+2 quarters
+0 dimes
+1 nickels
+1 pennies
+bash-3.2$ exit
+exit
+
+Script done on Tue Sep  1 11:29:47 2015

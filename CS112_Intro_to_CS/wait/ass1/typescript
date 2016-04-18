@@ -1,0 +1,64 @@
+Script started on Sun Sep 13 21:21:59 2015
+[?1034hbash-3.2$ exitjavac Date.java DateTest.java[C[C[C[C[C[C[C[C[C[C[C[C[C[C[11P BMICalculatorc BMICalculator.java
+bash-3.2$ javac BMICalculator.java[C[C[C[C[C[C[C[C[C[Cexit[Kjavac Date.java DateTest.java[C[C[C[C[C[C[C[C[C[C[C[C[C[C[11P BMICalculator
+Welcome to the body mass index (BMI) calculator
+Enter your weight in pounds: 115
+Enter your height in inches: 62
+Your BMI is: 21
+bash-3.2$ java BMICalculator
+Welcome to the body mass index (BMI) calculator
+Enter your weight in pounds: -115
+Enter your height in inches: 62
+The entered weight or height value is not valid
+bash-3.2$ java BMICalculator
+Welcome to the body mass index (BMI) calculator
+Enter your weight in pounds: 115
+Enter your height in inches: 0
+The entered weight or height value is not valid
+bash-3.2$ java BMICalculator
+Welcome to the body mass index (BMI) calculator
+Enter your weight in pounds: 0
+Enter your height in inches: 62
+The entered weight or height value is not valid
+bash-3.2$ java BMICalculator
+Welcome to the body mass index (BMI) calculator
+Enter your weight in pounds: 115
+Enter your height in inches: -62
+The entered weight or height value is not valid
+bash-3.2$ java BMICalculator[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kjavac Date.java DateTest.java
+bash-3.2$ java DateTest
+The initial date is: 9/11/2001
+Date with new values is: 10/17/1989
+bash-3.2$ javac Invoice.java InvoiceTest.java
+bash-3.2$ java InvoiceTest
+Original invoice information
+Part number: 1234
+Description:  Hammer
+Quantity: 2
+Price:  14.95
+Invoice amount: 29.90
+
+Updated invoice information
+Part number: 001234
+Description:  Yellow Hammer
+Quantity: 3
+Price:  19.49
+Invoice amount: 58.47
+
+Original invoice information
+Part number: 5678
+Description:  Paint Brush
+Quantity: 0
+Price:  0.00
+Invoice amount: 0.00
+
+Updated invoice information
+Part number: 5678
+Description:  Paint Brush
+Quantity: 3
+Price:  9.49
+Invoice amount: 28.47
+bash-3.2$ exit
+exit
+
+Script done on Sun Sep 13 21:24:03 2015

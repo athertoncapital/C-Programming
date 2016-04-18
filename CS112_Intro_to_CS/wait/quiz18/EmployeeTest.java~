@@ -1,0 +1,12 @@
+
+public class EmployeeTest {
+    public static void main(String[] args)
+    {
+	Employee emp=new Employee("Jim",2000);
+	Manager man=new Manager("Tim",2000,"CS");
+	Executive exe=new Executive("Sim",2000,"EE");
+	System.out.println(emp);
+	System.out.println(man);
+	System.out.println(exe);
+    }
+}

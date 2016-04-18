@@ -1,0 +1,618 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1347\cocoasubrtf570
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 1. (Accounts Payable System Modification) In this exercise, we modify the accounts payable application to include the complete functionality of the payroll application. The application should still process two Invoice objects, but now should process one object of each of the four Employee subclasses. If the object currently being processed is a BasePlusCommissionEmployee, the application should increase the BasePlusCommissionEmployee\'92s base salary by 10%. Finally, the application should output the payment amount for each object. Complete the following steps to create the new application:\
+a) Modify classes HourlyEmployee  and CommissionEmployee to place them in the Payable hierarchy as subclasses of the version of Employee that implements Payable. [Hint: Change the name of method earnings to getPaymentAmount in each subclass so that the class satisfies its inherited contract with interface Payable.] \
+b) Modify class BasePlusCommissionEmployee such that it extends the version of class CommissionEmployee created in part (a).\
+c) Modify PayableInterfaceTest to polymorphically process two Invoices, one SalariedEmployee, one HourlyEmployee, one CommissionEmployee and one BasePlusCommissionEmployee. First output a String representation of each Payable object. Next, if an object is a BasePlusCommissionEmployee, increase its base salary by 10%. Finally, output the payment amount for each Payable object.\
+/////\
+// Fig. 10.8: BasePlusCommissionEmployee.java\
+// BasePlusCommissionEmployee class extends CommissionEmployee.\
+\
+public class BasePlusCommissionEmployee extends CommissionEmployee \
+\{\
+   private double baseSalary; // base salary per week\
+\
+   // constructor\
+   public BasePlusCommissionEmployee(String firstName, String lastName, \
+      String socialSecurityNumber, double grossSales,\
+      double commissionRate, double baseSalary)\
+   \{\
+      super(firstName, lastName, socialSecurityNumber, \
+         grossSales, commissionRate);\
+\
+      if (baseSalary < 0.0) // validate baseSalary                  \
+         throw new IllegalArgumentException("Base salary must be >= 0.0");\
+            \
+      this.baseSalary = baseSalary;                \
+   \}\
+\
+   // set base salary\
+   public void setBaseSalary(double baseSalary)\
+   \{\
+      if (baseSalary < 0.0) // validate baseSalary                  \
+         throw new IllegalArgumentException("Base salary must be >= 0.0");\
+            \
+      this.baseSalary = baseSalary;                \
+   \} \
+\
+   // return base salary\
+   public double getBaseSalary()\
+   \{\
+      return baseSalary;\
+   \}\
+\
+   // calculate earnings; override method earnings in CommissionEmployee\
+   @Override                                                            \
+   public double getPaymentAmount()                                             \
+   \{                                                                    \
+      return getBaseSalary() + super.getPaymentAmount();                        \
+   \} \
+\
+   // return String representation of BasePlusCommissionEmployee object\
+   @Override                                                           \
+   public String toString()                                            \
+   \{                                                                   \
+      return String.format("%s %s; %s: $%,.2f",                       \
+         "base-salaried", super.toString(),                            \
+         "base salary", getBaseSalary());                             \
+   \} \
+\} // end class BasePlusCommissionEmployee\
+\
+/////\
+// Fig. 10.7: CommissionEmployee.java\
+// CommissionEmployee class extends Employee.\
+\
+public class CommissionEmployee extends Employee \
+\{\
+   private double grossSales; // gross weekly sales\
+   private double commissionRate; // commission percentage\
+\
+   // constructor\
+   public CommissionEmployee(String firstName, String lastName, \
+      String socialSecurityNumber, double grossSales, \
+      double commissionRate)\
+   \{\
+      super(firstName, lastName, socialSecurityNumber);\
+\
+      if (commissionRate <= 0.0 || commissionRate >= 1.0) // validate \
+         throw new IllegalArgumentException(\
+            "Commission rate must be > 0.0 and < 1.0");\
+\
+      if (grossSales < 0.0) // validate\
+         throw new IllegalArgumentException("Gross sales must be >= 0.0");\
+\
+      this.grossSales = grossSales;\
+      this.commissionRate = commissionRate;\
+   \} \
+\
+   // set gross sales amount\
+   public void setGrossSales(double grossSales)\
+   \{\
+      if (grossSales < 0.0) // validate\
+         throw new IllegalArgumentException("Gross sales must be >= 0.0");\
+\
+      this.grossSales = grossSales;\
+   \} \
+\
+   // return gross sales amount\
+   public double getGrossSales()\
+   \{\
+      return grossSales;\
+   \} \
+\
+   // set commission rate\
+   public void setCommissionRate(double commissionRate)\
+   \{\
+      if (commissionRate <= 0.0 || commissionRate >= 1.0) // validate\
+         throw new IllegalArgumentException(\
+            "Commission rate must be > 0.0 and < 1.0");\
+\
+      this.commissionRate = commissionRate;\
+   \} \
+\
+   // return commission rate\
+   public double getCommissionRate()\
+   \{\
+      return commissionRate;\
+   \} \
+\
+   // calculate earnings; override abstract method earnings in Employee\
+   @Override                                                           \
+   public double getPaymentAmount()                                            \
+   \{                                                                   \
+      return getCommissionRate() * getGrossSales();                    \
+   \}                                             \
+\
+   // return String representation of CommissionEmployee object\
+   @Override                                                   \
+   public String toString()                                    \
+   \{                                                           \
+      return String.format("%s: %s%n%s: $%,.2f; %s: %.2f",    \
+         "commission employee", super.toString(),              \
+         "gross sales", getGrossSales(),                       \
+         "commission rate", getCommissionRate());             \
+   \} \
+\} // end class CommissionEmployee\
+/////\
+// Fig. 10.13: Employee.java\
+// Employee abstract superclass implements Payable.\
+\
+public abstract class Employee implements Payable\
+\{\
+   private String firstName;\
+   private String lastName;\
+   private String socialSecurityNumber;\
+\
+   // three-argument constructor\
+   public Employee(String first, String last, String ssn)\
+   \{\
+      firstName = first;\
+      lastName = last;\
+      socialSecurityNumber = ssn;\
+   \} // end three-argument Employee constructor\
+\
+   // set first name\
+   public void setFirstName(String first)\
+   \{\
+      firstName = first; // should validate\
+   \} // end method setFirstName\
+\
+   // return first name\
+   public String getFirstName()\
+   \{\
+      return firstName;\
+   \} // end method getFirstName\
+\
+   // set last name\
+   public void setLastName(String last)\
+   \{\
+      lastName = last; // should validate\
+   \} // end method setLastName\
+\
+   // return last name\
+   public String getLastName()\
+   \{\
+      return lastName;\
+   \} // end method getLastName\
+\
+   // set social security number\
+   public void setSocialSecurityNumber(String ssn)\
+   \{\
+      socialSecurityNumber = ssn; // should validate\
+   \} // end method setSocialSecurityNumber\
+\
+   // return social security number\
+   public String getSocialSecurityNumber()\
+   \{\
+      return socialSecurityNumber;\
+   \} // end method getSocialSecurityNumber\
+\
+   // return String representation of Employee object\
+   @Override\
+   public String toString()\
+   \{\
+      return String.format("%s %s\\nsocial security number: %s", \
+         getFirstName(), getLastName(), getSocialSecurityNumber());\
+   \} // end method toString\
+\
+   // Note: We do not implement Payable method getPaymentAmount here so  \
+   // this class must be declared abstract to avoid a compilation error.\
+\} // end abstract class Employee\
+/////\
+// Fig. 10.6: HourlyEmployee.java\
+// HourlyEmployee class extends Employee.\
+\
+public class HourlyEmployee extends Employee \
+\{\
+   private double wage; // wage per hour\
+   private double hours; // hours worked for week\
+\
+   // constructor\
+   public HourlyEmployee(String firstName, String lastName,\
+      String socialSecurityNumber, double wage, double hours)\
+   \{\
+      super(firstName, lastName, socialSecurityNumber);\
+\
+      if (wage < 0.0) // validate wage\
+         throw new IllegalArgumentException(\
+            "Hourly wage must be >= 0.0");\
+\
+      if ((hours < 0.0) || (hours > 168.0)) // validate hours\
+         throw new IllegalArgumentException(\
+            "Hours worked must be >= 0.0 and <= 168.0");\
+\
+      this.wage = wage;\
+      this.hours = hours;\
+   \} \
+\
+   // set wage\
+   public void setWage(double wage)\
+   \{\
+      if (wage < 0.0) // validate wage\
+         throw new IllegalArgumentException(\
+            "Hourly wage must be >= 0.0");\
+\
+      this.wage = wage;\
+   \} \
+\
+   // return wage\
+   public double getWage()\
+   \{\
+      return wage;\
+   \} \
+\
+   // set hours worked\
+   public void setHours(double hours)\
+   \{\
+      if ((hours < 0.0) || (hours > 168.0)) // validate hours\
+         throw new IllegalArgumentException(\
+            "Hours worked must be >= 0.0 and <= 168.0");\
+\
+      this.hours = hours;\
+   \} \
+\
+   // return hours worked\
+   public double getHours()\
+   \{\
+      return hours;\
+   \} \
+\
+   // calculate earnings; override abstract method earnings in Employee\
+   @Override                                                           \
+   public double getPaymentAmount()                                            \
+   \{                                                                   \
+      if (getHours() <= 40) // no overtime                           \
+         return getWage() * getHours();                                \
+      else                                                             \
+         return 40 * getWage() + (getHours() - 40) * getWage() * 1.5;\
+   \}                                          \
+\
+   // return String representation of HourlyEmployee object              \
+   @Override                                                             \
+   public String toString()                                              \
+   \{                                                                     \
+      return String.format("hourly employee: %s%n%s: $%,.2f; %s: %,.2f",\
+         super.toString(), "hourly wage", getWage(),                     \
+         "hours worked", getHours());                                   \
+   \}                                    \
+\} // end class HourlyEmployee\
+\
+/////\
+// Fig. 10.15: Invoice.java\
+// Invoice class implements Payable.\
+\
+public class Invoice implements Payable\
+\{\
+   private String partNumber; \
+   private String partDescription;\
+   private int quantity;\
+   private double pricePerItem;\
+\
+   // four-argument constructor\
+   public Invoice(String part, String description, int count, \
+      double price)\
+   \{\
+      partNumber = part;\
+      partDescription = description;\
+      setQuantity(count); // validate and store quantity\
+      setPricePerItem(price); // validate and store price per item\
+   \} // end four-argument Invoice constructor\
+\
+   // set part number\
+   public void setPartNumber(String part)\
+   \{\
+      partNumber = part; // should validate\
+   \} // end method setPartNumber\
+\
+   // get part number\
+   public String getPartNumber()\
+   \{\
+      return partNumber;\
+   \} // end method getPartNumber\
+\
+   // set description\
+   public void setPartDescription(String description)\
+   \{\
+      partDescription = description; // should validate\
+   \} // end method setPartDescription\
+\
+   // get description\
+   public String getPartDescription()\
+   \{\
+      return partDescription;\
+   \} // end method getPartDescription\
+\
+   // set quantity\
+   public void setQuantity(int count)\
+   \{\
+      quantity = (count < 0) ? 0 : count; // quantity cannot be negative\
+   \} // end method setQuantity\
+\
+   // get quantity\
+   public int getQuantity()\
+   \{\
+      return quantity;\
+   \} // end method getQuantity\
+\
+   // set price per item\
+   public void setPricePerItem(double price)\
+   \{\
+      pricePerItem = (price < 0.0) ? 0.0 : price; // validate price\
+   \} // end method setPricePerItem\
+\
+   // get price per item\
+   public double getPricePerItem()\
+   \{\
+      return pricePerItem;\
+   \} // end method getPricePerItem\
+\
+   // return String representation of Invoice object\
+   @Override\
+   public String toString()\
+   \{\
+      return String.format("%s: \\n%s: %s (%s) \\n%s: %d \\n%s: $%,.2f", \
+         "invoice", "part number", getPartNumber(), getPartDescription(), \
+         "quantity", getQuantity(), "price per item", getPricePerItem());\
+   \} // end method toString\
+\
+   // method required to carry out contract with interface Payable\
+   @Override\
+   public double getPaymentAmount() \
+   \{\
+      return getQuantity() * getPricePerItem(); // calculate total cost\
+   \} // end method getPaymentAmount\
+\} // end class Invoice\
+/////\
+// Exercise 10.15 Solution: Payable.java\
+// Payable interface declaration.\
+\
+public interface Payable \
+\{    \
+   double getPaymentAmount(); // calculate payment; no implementation\
+\} // end interface Payable\
+/////\
+// Exercise 10.15 Solution: PayableInterfaceTest.java\
+// Tests interface Payable.\
+\
+public class PayableInterfaceTest \
+\{\
+   public static void main(String[] args)\
+   \{\
+      // create six-element Payable array\
+      Payable[] payableObjects = new Payable[6];\
+      \
+      // populate array with objects that implement Payable\
+      payableObjects[0] = new Invoice("01234", "seat", 2, 375.00);\
+      payableObjects[1] = new Invoice("56789", "tire", 4, 79.95);\
+      payableObjects[2] = \
+         new SalariedEmployee("John", "Smith", "111-11-1111", 800.00);\
+      payableObjects[3] = \
+         new HourlyEmployee("Karen", "Price", "222-22-2222", 16.75, 40);\
+      payableObjects[4] = \
+         new CommissionEmployee(\
+         "Sue", "Jones", "333-33-3333", 10000, .06);\
+      payableObjects[5] = \
+         new BasePlusCommissionEmployee(\
+         "Bob", "Lewis", "444-44-4444", 5000, .04, 300);\
+\
+      System.out.println(\
+         "Invoices and Employees processed polymorphically:\\n"); \
+\
+      // generically process each element in array payableObjects\
+      for (Payable currentPayable : payableObjects)\
+      \{\
+         // output currentPayable and its appropriate payment amount\
+         System.out.printf("%s \\n", currentPayable.toString()); \
+            \
+         if (currentPayable instanceof BasePlusCommissionEmployee)\
+         \{\
+            // downcast Payable reference to \
+            // BasePlusCommissionEmployee reference\
+            BasePlusCommissionEmployee employee = \
+               (BasePlusCommissionEmployee) currentPayable;\
+\
+            double oldBaseSalary = employee.getBaseSalary();\
+            employee.setBaseSalary(1.10 * oldBaseSalary);\
+            System.out.printf(\
+               "new base salary with 10%% increase is: $%,.2f\\n",\
+               employee.getBaseSalary());\
+         \} // end if\
+\
+         System.out.printf("%s: $%,.2f\\n\\n",\
+            "payment due", currentPayable.getPaymentAmount()); \
+      \} // end for\
+   \} // end main\
+\} // end class PayableInterfaceTest\
+/////\
+// Exercise 10.15 Solution: SalariedEmployee.java\
+// SalariedEmployee class extends Employee, which implements Payable.\
+\
+public class SalariedEmployee extends Employee \
+\{\
+   private double weeklySalary;\
+\
+   // four-argument constructor\
+   public SalariedEmployee(String first, String last, String ssn, \
+      double salary)\
+   \{\
+      super(first, last, ssn); // pass to Employee constructor\
+      setWeeklySalary(salary); // validate and store salary\
+   \} // end four-argument SalariedEmployee constructor\
+\
+   // set salary\
+   public void setWeeklySalary(double salary)\
+   \{\
+      weeklySalary = salary < 0.0 ? 0.0 : salary;\
+   \} // end method setWeeklySalary\
+\
+   // return salary\
+   public double getWeeklySalary()\
+   \{\
+      return weeklySalary;\
+   \} // end method getWeeklySalary\
+\
+   // calculate earnings; implement interface Payable method that was\
+   // abstract in superclass Employee\
+   @Override\
+   public double getPaymentAmount()\
+   \{\
+      return getWeeklySalary();\
+   \} // end method getPaymentAmount\
+\
+   // return String representation of SalariedEmployee object\
+   @Override\
+   public String toString()\
+   \{\
+      return String.format("salaried employee: %s\\n%s: $%,.2f", \
+         super.toString(), "weekly salary", getWeeklySalary());\
+   \} // end method toString\
+\} // end class SalariedEmployee\
+/////\
+\
+Section 10.6  Allowed Assignments Between Superclass and Subclass Variables\
+\
+10.6 Q1: Assigning a subclass reference to a superclass variable is safe ________.\
+a. because the subclass object has an object of its superclass.\
+b. because the subclass object is an object of its superclass.\
+c. only when the superclass is abstract.\
+d. only when the superclass is concrete.\
+	\
+Section 10.7  final Methods and Classes\
+\
+10.7 Q1: Classes and methods are declared final for all but the following reasons:\
+a. final methods allow inlining the code.\
+b. final methods and classes prevent further inheritance.\
+c. final methods are static.\
+d. final methods can improve performance.\
+\
+10.7 Q2: All of the following methods are implicitly final except:\
+a. a method in an abstract class.\
+b. a private method.\
+c. a method declared in a final class.\
+d. static method.\
+\
+10.7 Q3: Declaring a method final means:\
+a. it will prepare the object for garbage collection.\
+b. it cannot be accessed from outside its class.\
+c. it cannot be overloaded.\
+d. it cannot be overridden.\
+\
+Section 10.8  A Deeper Explanation of Issues with Calling Methods from Constructors \
+\
+10.8 Q1: Which of the following is false? \
+a. You should not call overridable methods from constructors\'97when creating a subclass object, this could lead to an overridden method being called before the subclass object is fully initialized. \
+b. It\'92s OK to any of a class\'92s methods from its constructors.\
+c. When you construct a subclass object, its constructor first calls one of the direct superclass\'92s constructors. If the superclass constructor calls an overridable method, the subclass\'92s version of that method will be called by the superclass constructor.\
+d. It\'92s acceptable to call a static method from a constructor. \
+\
+Section 10.9   Creating and Using Interfaces\
+\
+10.9 Q1: In Java SE 7 and earlier, an interface may contain:\
+a. private static data and public abstract methods.\
+b. only public abstract methods.\
+c. public static final data and public abstract methods.\
+d. private static data and public final methods.\
+\
+10.9 Q2: Which of the following does not complete the sentence correctly?\
+An interface         .\
+a. forces classes that implement it to declare all the abstract interface methods.\
+b. can be used in place of an abstract class when there is no default implementation to inherit.\
+c. is declared in a file by itself and is saved in a file with the same name as the interface followed by the .java extension.\
+d. can be instantiated.\
+\
+Section 10.9.1 Developing a Payable Hierarchy\
+\
+10.9.1 Q1: The UML distinguishes an interface from other classes by placing the word \'93interface\'94 in          above the interface name.\
+a. italics.\
+b. carets.\
+c. guillemets.\
+d. bold.\
+\
+Section 10.9.2 Interface Payable\
+\
+10.9.2 Q1: Interfaces can have          methods.\
+a. 0\
+b. 1\
+c. 2\
+d. any number of\
+\
+Section 10.9.3 Class Invoice\
+\
+10.9.3 Q1: Which keyword is used to specify that a class will define the methods of an interface?\
+a. uses\
+b. implements\
+c. defines\
+d. extends\
+\
+10.9.3 Q2: Which of the following is not possible?\
+a. A class that implements two interfaces.\
+b. A class that inherits from two classes.\
+c. A class that inherits from one class, and implements an interface.\
+d. All of the above are possible.\
+\
+Section 10.9.4 Modifying Class Employee to Implement Interface Payable\
+\
+10.9.4 Q1: A class that implements an interface but does not declare all of the interface\'92s methods must be declared ________.\
+a. public.\
+b. interface.\
+c. abstract.\
+d. final.\
+\
+Section 10.9.5  	Modifying Class SalariedEmployee for Use in the Payable Hierarchy \
+10.9.5 Q1: Which of the following statements is false?\
+a. An advantage of inheritance over interfaces is that only inheritance provides the is-a relationship.\
+b. Objects of any subclass of a class that implements an interface can also be thought of as objects of that interface type.\
+c. When a method parameter is declared with a subclass or interface type, the method processes the object passed as an argument polymorphically.\
+d. All objects have the methods of class Object.\
+\
+Section 10.9.6  Using Interface Payable to Process Invoices and Employees Polymorphically \
+\
+10.9.6 Q1: Which of the following statements is false?\
+a. References to interface types do not have access to method toString.\
+b.  Method toString can be invoked implicitly on any object.\
+c.  With inheritance, classes and their inherited classes tend to be very similar.\
+d. Dramatically different classes can often meaningfully implement the same interface.\
+\
+Section 10.9.7 	Some Common Interfaces of the Java API\
+\
+10.9.7: Q1: Which interface is used to identify classes whose objects can be written to or read from some type of storage or transmitted across a network?\
+a. Comparable\
+b. Runnable\
+c. AutoCloseable\
+d. Serializable\
+\
+10.9.7: Q2: Which interface is specifically intended to be implemented by classes that can be used with the try-with-resources statement?\
+a. Comparable\
+b. Runnable\
+c. AutoCloseable\
+d. Serializable\
+\
+Section 10.10.1 	default Interface Methods\
+\
+10.10.1 Q1: Which of the following statements is false?\
+a. In Java SE 8, an interface may declare default methods\'97that is, public methods with concrete implementations that specify how an operation should be performed. \
+b. When a class implements an interface, the class receives the interface\'92s default concrete implementations if it does not override them.  \
+c. When you enhance an existing interface with default methods\'97any class that implemented the original interface will break. \
+d. With default methods, you can declare common method implementations in interfaces (rather than abstract classes), which gives you more flexibility in designing your classes. \
+\
+Section 10.10.2 	static Interface Methods\
+\
+10.10.2 Q1: Which of the following statements is false?\
+a. Prior to Java SE 8, it was common to associate with an interface a class containing static helper methods for working with objects that implemented the interface.\
+b. Class Collections contains many static helper methods for working with objects that implement interfaces Collection, List, Set and more. \
+c. Collections method sort can sort objects of any class that implements interface List.\
+d. With non-static interface methods, helper methods can now be declared directly in interfaces rather than in separate classes.\
+\
+Section 10.10.3 	Functional Interfaces\
+\
+10.10.3 Q1: Which of the following statements is false?\
+a. As of Java SE 8, any interface containing only one method is known as a functional interface. \
+b. There are many functional interfaces throughout the Java APIs.  \
+c. Functional interfaces are used extensively with Java SE 8\'92s new lambda capabilities. \
+d. Anonymous methods provide a shorthand notation for creating lambdas.\
+\
+}

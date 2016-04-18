@@ -1,0 +1,16 @@
+Script started on Tue Dec  8 22:27:46 2015
+[?1034hbash-3.2$ ajcs[K[K[K[Kjavac CommandLine.java
+bash-3.2$ java CommandLine.[K      
+0
+bash-3.2$ java CommandLine      [K[K[Kasdjfas
+Not a legal number! Usage: java CommandLine <double>
+bash-3.2$ java CommandLine   asdjfasfsadf 123 123
+Not a legal number! Usage: java CommandLine <double>
+bash-3.2$ java CommandLine   asdjfasfsadf 123 123[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K-1 -2 1 2 [K
+The average of 4 numbers is 0.000000 
+bash-3.2$ java CommandLine  -1 -2 1 2[K[K[K[K[K[K[K.5 1
+The average of 2 numbers is -0.250000 
+bash-3.2$ exit
+exit
+
+Script done on Tue Dec  8 22:28:39 2015

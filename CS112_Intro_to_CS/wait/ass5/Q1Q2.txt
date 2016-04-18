@@ -1,0 +1,16 @@
+William H. Chuang
+1.
+a. Legal
+b. illegal
+c. illegal
+d. Legal
+
+2. 
+a. legal.
+b. Not legal.
+c. legal. The object e, an interface type, can be cast as a Sandwich and stored as sub.
+d. Not legal. 
+e. Not legal.
+f. Not legal.
+g. Not legal.
+h. Not legal.

@@ -1,0 +1,1569 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1347\cocoasubrtf570
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 ///Lab14\
+1. (Recursive power Method) Write a recursive method power(base, exponent) that, when called, returns base^exponent. For example, power( 3,4 ) = 3 * 3 * 3 * 3. Assume that exponent is an integer greater than or equal to 1. [Hint: The recursion step should use the relationship base^exponent = base * (base ^ exponent \'96 1) and the terminating condition occurs when exponent is equal to 1, because base^1 = base. Incorporate this method into a program that enables the user to enter the base and exponent.]\
+2. (Greatest Common Divisor) The greatest common divisor of integers x and y is the largest integer that evenly divides into both x and y. Write a recursive method gcd that returns the greatest common divisor of x and y. The gcd of x and y is defined recursively as follows: If y is equal to 0, then gcd( x, y ) is x; otherwise, gcd( x, y ) is gcd( y, x % y ), where % is the remainder operator. \
+Chapter 18: Recursion\
+18.1  Introduction\
+\
+18.1 Q1: A recursive method         .\
+a. is a method that calls itself.\
+b. can be called directly.\
+c. can be called indirectly through another method.\
+d. All of the above.\
+\
+18.2  Recursion Concepts\
+\
+18.2 Q1: When a recursive method is called to solve a problem, the method actually is capable of solving only the simplest case(s), or         .\
+a. base case(s).\
+b. base step(s).\
+c. recursive call(s).\
+d. recursion step(s).\
+\
+\
+18.2 Q2: When the recursion step executes:\
+a. this is known as indirect recursion.\
+b. all of the computer\'92s processes halt until the recursion step has completed executing.\
+c. the original call to the method is still active.\
+d. All of the above.\
+\
+18.3  Example Using Recursion: Factorials\
+18.3 Q1: Which of the following statements about recursion are true?\
+a. Recursion can occur infinitely.\
+b. Recursion uses a termination test.\
+c. Both a and b.\
+d. Neither a nor b.\
+\
+18.3 Q2: The recursion step should:\
+a. check for the base case.\
+b. call a fresh copy of the recursive method to work on a smaller problem.\
+c. make two calls to the recursive method.\
+d. iterate until it reaches a termination condition.\
+\
+18.4  Reimplementing Class FactorialCalculator Using Class BigInteger \
+\
+18.4 Q1: Which of the following is false?\
+a. Since BigInteger is not a primitive type, we can\'92t use the arithmetic, relational and equality operators with BigIntegers.\
+b. BigInteger method compareTo compares the BigInteger number that calls the method to the method\'92s BigInteger argument, and returns -1 if the BigInteger that calls the method is less than the argument, 0 if they\'92re equal or 1 if the BigInteger that calls the method is greater than the argument. \
+c. The value 1 can be implicitly converted to a BigInteger.\
+d. BigInteger can represent integer values larger than what primitive type long can represent.\
+\
+///Lab15\
+ 1. Give the outputs of the following Java code:\
+public class Divisor\
+\{\
+    public static void main(String[] args)\
+    \{\
+        System.out.printf("GCD is %d%d%n%n", gcd(52, 12));\
+    \}\
+    public static int gcd(int x, int y)\
+    \{\
+	System.out.println(x+","+y);\
+        if (y == 0)\
+            return x;\
+        else\
+            return gcd(y, x % y);\
+    \}\
+\} // end class Divisor\
+ 2. Give the outputs of the following Java code:\
+\{\
+    public static void main(String[] args)\
+    \{\
+        System.out.println(someMethod(5));\
+    \}\
+\
+    public static int someMethod(int n)\
+    \{\
+        System.out.println(n);\
+        if (n == 0)\
+            return 0;\
+        else\
+            return n + someMethod(n-1);\
+    \}\
+\}\
+///Lab16\
+1. Write Java statements to accomplish each of the following tasks:\
+a) Declares and creates a 10-element array of type int\
+b) Initialize each of the elements of the array to -10.\
+c) Update each element by adding a random number between 0 and 10, inclusive.\
+d) Total the 10 elements of the array using enhanced for-loop and display the result.\
+e) Determine and display the smallest and largest values of the array .\
+2. (Count the Frequency) Declare and create a 10-element count array of type int to store the frequency of user entered numbers. Next, prompt the user to enter five integer numbers, each between 0 and 9, inclusive. As each number is read, add 1 to the count array. Use try-catch block to handle the case when user enters a number is outside the range of 0 and 9. Finally, display the count array.\
+3. (Array of Objects) Create a Class Book that contains two instance variables: title (String type) and author (String type). Implement a constructor that takes two parameters (String title, String author) and initialize the instance variables with the given parameter values. Also, implement a toString method that display the Book class.\
+Next, implement a BookTest class that declares and creates an array of Book with 5 elements. After that, prompt the user to enter the book title and book author to create Book object and add to the array. Finally, display the Book array contents.\
+Chapter 7 Arrays and ArrayLists\
+Section 7.1  Introduction\
+7.1 Q1: Arrays are ________. \
+a. variable-length entities\
+b. fixed-length entities\
+c. data structures that contain up to 10 related data items\
+d. used to draw a sequence of lines, or \'93rays\'94\
+\
+Section 7.2  Arrays\
+7.2 Q1: Which of the following statements about arrays are true?\
+A. An array is a group of variables containing values that all have the same type.\
+B. Elements are located by index.\
+C. The length of an array c is determined by the expression c.length();.\
+D. The zeroth element of array c is specified by c[0].\
+\
+a. A, C, D.\
+b. A, B, D.\
+c. C, D.\
+d. A, B, C, D.\
+\
+7.2 Q2: Consider the array:\
+s[0] = 7\uc0\u8232 s[1] = 0\u8232 s[2] = -12\u8232 s[3] = 9\u8232 s[4] = 10\u8232 s[5] = 3\u8232 s[6] = 6\
+The value of s[s[6] - s[5]] is:\
+a. 0.\
+b. 3.\
+c. 9.\
+d. 0.\
+\
+Section 7.3  Declaring and Creating Arrays\
+7.3 Q1: A programmer must do the following before using an array:\
+a. declare then reference the array.\
+b. create then declare the array.\
+c. create then reference the array.\
+d. declare then create the array.\
+\
+7.3 Q2: Consider the code segment below. Which of the following statements is false?\
+int[] g;\uc0\u8232 g = new int[23];\
+a. The value of g[3] is -1.\
+b. The first statement declares an array reference.\
+c. The second statement creates the array.\
+d. g is a reference to an array of integers.\
+\
+Section 7.4  Examples Using Arrays\
+Section 7.4.1 Creating and Initializing an Array\
+\
+7.4.1 Q1: Which of the following statements about creating arrays and initializing their elements is false?\
+a. The new keyword should be used to create an array.\
+b. When an array is created with operator new, the number of elements must be placed in square brackets following the type of element being stored.\
+c. The elements of an array of integers have a value of null before they are initialized.\
+d. A for loop is commonly used to set the values of the elements of an array.\
+\
+\
+7.4.1 Q2: What do the following statements do?\
+double[] array;\uc0\u8232 array = new double[14];\
+a. Create a double array containing 13 elements.\
+b. Create a double array containing 14 elements.\
+c. Create a double array containing 15 elements.\
+d. Declare but do not create a double array.\
+\
+Section 7.4.2 Using an Array Initializer\
+\
+7.4.2 Q1: Which of the following initializer lists would correctly set the elements of array n?\
+a. int[] n = \{1, 2, 3, 4, 5\};.\
+b. array n[int] = \{1, 2, 3, 4, 5\};.\
+c. int n[5] = \{1; 2; 3; 4; 5\};.\
+d. int n = new int(1, 2, 3, 4, 5);.\
+\
+Section 7.4.3 Calculating a Value to Store in Each Array Element\
+\
+7.4.3 Q1: Constant variables also are called         .\
+a. write-only variables\
+b. finals\
+c. named constants\
+d. All of the above\
+\
+7.4.3 Q2: Which of the following will not produce a compiler error?\
+a. Changing the value of a constant after it is initialized.\
+b. Changing the value at a given index of an array after it is created.\
+c. Using a final variable before it is initialized.\
+d. All of the above will produce compiler errors.\
+\
+Section 7.4.4 Summing the Elements of an Array\
+\
+7.4.4 Q1: Consider the program below:\
+public class Test\uc0\u8232 \{\u8232    public static void main(String[] args)\u8232    \{\u8232       int[] a;\u8232       a = new int[10];\u8232 \u8232       for (int i = 0; i < a.length; i++)\u8232          a[i] = i + 2;\
+      int result = 0;\uc0\u8232       for (int i = 0; i < a.length; i++)\u8232          result += a[i];\
+      System.out.printf("Result is: %d%n", result);\uc0\u8232    \} \u8232 \} \
+The output of this program will be:\
+a. Result is: 62.\
+b. Result is: 64.\
+c. Result is: 65.\
+d. Result is: 67.\
+\
+\
+7..4.4 Q2: Consider the class below:\
+public class Test\uc0\u8232 \{\u8232    public static void main(String[] args)\u8232    \{\u8232       int[] a = \{99, 22, 11, 3, 11, 55, 44, 88, 2, -3\};\u8232 \u8232       int result = 0;\u8232 \u8232       for (int i = 0; i < a.length; i++)\u8232       \{\u8232          if (a[i] > 30)\u8232             result += a[i];\u8232       \} \u8232 \u8232       System.out.printf("Result is: %d%n", result);\u8232    \} \u8232 \} \
+The output of this Java program will be:\
+a. Result is: 280.\
+b. Result is: 286.\
+c. Result is: 154.\
+d. Result is: 332.\
+\
+Section 7.4.5 Using Bar Charts to Display Array Data Graphically\
+\
+7.4.5 Q1: Which flag in a format specifier indicates that values with fewer digits than the field width should begin with a leading 0?\
+a. p.\
+b. l.\
+c. w.\
+d. 0.\
+\
+Section 7.4.6 Using the Elements of an Array as Counters\
+\
+7.4.6 Q1: Invalid possibilities for array indices include         .	\
+a. Positive integers.\
+b. Negative integers.\
+c. Zero.\
+d. None of the above.\
+\
+Section 7.4.7 Using Arrays to Analyze Survey Results\
+\
+7.4.7 Q1: Which expression adds 1 to the element of array arrayName at index i?\
+a. ++arrayName[i].\
+b. arrayName++[i].\
+c. arrayName[i++].\
+d. None of the above.\
+\
+\
+7.4.7 Q2: Attempting to access an array element outside of the bounds of an array, causes a(n)         .\
+a. ArrayOutOfBoundsException.\
+b. ArrayElementOutOfBoundsException.\
+c. ArrayIndexOutOfBoundsException.\
+d. ArrayException.\
+\
+\
+7.4.7 Q3: Which of the following statements is false?\
+a. An exception indicates a problem that occurs while a program executes. \
+b. Exception handling enables you to create fault-tolerant programs that can resolve (or handle) exceptions\'97in many cases, this allows a program to continue executing as if no problems were encountered. \
+c. The catch block contains the code that might throw an exception, and the try block contains the code that handles the exception if one occurs. \
+d. Inside the catch block, you can use the parameter\'92s identifier to interact with a caught exception object. \
+\
+Section 7.5 Exception Handling: Processing the Incorrect Response \
+7.5 Q1: A(n) ________  indicates a problem that occurs while a program executes. \
+a. syntax error\
+b. omitted import\
+c. missing semicolon\
+d. exception\
+\
+7.5 Q2: Exception handling helps you create ________  programs. \
+a. high-performance\
+b. logic-error-free\
+c. fault-tolerant\
+d. compilation-error-free\
+\
+Section 7.5.1 The try Statement\
+7.5.1 Q1: Which of the following statements is true?\
+a. The catch block contains the code that might throw an exception.\
+b. The try block contains the code that handles the exception if one occurs.	\
+c. You can have many catch blocks to handle different types of exceptions.\
+d. When a try block terminates, any variables declared in the try block are preserved.\
+\
+Section 7.5.2 Executing the catch Block\
+7.5.2 Q1 Which of the following statements is false?\
+a. A catch block declares a type and an exception parameter name.\
+b. Inside the catch block, you can use the parameter\'92s name to interact with a caught exception object.\
+c. When a program is executed, array element indices are checked for validity\'97all indices must be greater than 0 and less than or equal to the length of the array.\
+d. If an attempt is made to use an invalid index to access an element, an ArrayIndexOutOfBoundsException exception occurs.\
+\
+Section 7.5.3 toString Method of the Exception Parameter\
+7.5.3 Q1: An exception object\'92s ________ method returns the exception\'92s error message.\
+a. String\
+b. Message\
+c. Error\
+d. toString\
+\
+Section 7.6  Case Study: Card Shuffling and Dealing Simulation\
+\
+7.6 Q1: Consider integer array values, which contains 5 elements. Which statements successfully swap the contents of the array at index 3 and index 4?\
+a. \
+values[3] = values[4];\uc0\u8232 values[4] = values[3];\
+b. \
+values[4] = values[3];\uc0\u8232 values[3] = values[4];\
+c. \
+int temp = values[3];\uc0\u8232 values[3] = values[4];\u8232 values[4] = temp;\
+d. \
+int temp = values[3];\uc0\u8232 values[3] = values[4];\u8232 values[4] = values[3];\
+\
+7.6 Q2: Assume class Book has been declared. Which set of statements creates an array of Books?\
+a. \
+Book[] books;\uc0\u8232 books = new Book[numberElements];\
+b. \
+Book[] books];\uc0\u8232 books = new Book()[numberElements];\
+c. \
+new Book() books[];\uc0\u8232 books = new Book[numberElements];\
+d. All of the above.\
+\
+\
+7.6 Q3: How many Book objects are created by the following statement?\
+Book[] books = new Book[10];\
+a. 10\
+b. 0\
+c. 5\
+d. None of the above.\
+\
+Section 7.7  Enhanced for Statement\
+7.7 Q1: Assume array items contains the integer values 0, 2, 4, 6 and 8. Which of the following uses the enhanced for loop to display each value in array items?\
+a. \
+for (int i = 0; i < items.length; i++)\uc0\u8232    System.out.prinf("%d%n", items[i]);\
+b. \
+for (int i : items)\uc0\u8232    System.out.prinf("%d%n", items[i]);\
+c. \
+for (int i : items)\uc0\u8232    System.out.prinf("%d%n", i);\
+d. \
+for (int i = 0 : items.length)\uc0\u8232    System.out.prinf("%d%n", items[i]);\
+\
+\
+7.7 Q2: Which of the following tasks cannot be performed using an enhanced for loop?\
+a. Calculating the product of all the values in an array.\
+b. Displaying all even element values in an array.\
+c. Comparing the elements in an array to a specific value.\
+d. Incrementing the value stored in each element of the array.\
+\
+Section 7.8  Passing Arrays to Methods\
+\
+7.8 Q1: Which statement correctly passes the array items to method takeArray? Array items contains 10 elements.\
+a. takeArray(items[]).\
+b. takeArray(items).\
+c. takeArray(items[9]).\
+d. Arrays cannot be passed to methods\'97each item must be sent to the method separately.\
+\
+7.8 Q2: Consider array items, which contains the values 0, 2, 4, 6 and 8. If method changeArray is called with the method call changeArray(items, items[2]), what values are stored in items after the method has finished executing?\
+public static void changeArray(int[] passedArray, int value)\uc0\u8232 \{\u8232    passedArray[value] = 12;\u8232    value = 5;\u8232 \} \
+a. 0, 2, 5, 6, 12.\
+b. 0, 2, 12, 6, 8.\
+c. 0, 2, 4, 6, 5.\
+d. 0, 2, 4, 6, 12.\
+\
+Notes on Passing Arguments to Methods\
+\
+7.8 Q3: When an argument is passed by reference, ________.\
+a. a copy of the argument\'92s value is passed to the called method\
+b. changes to the argument do not affect the original variable\'92s value in the caller\
+c. the called method can access the argument\'92s value in the caller directly and modify that data\
+d. the original value is removed from memory\
+\
+Section 7.9 Pass-By-Value vs. Pass-By-Reference\
+\
+7.9 Q1: Which of the following statements is false?\
+a. When an argument is passed by reference, the called method can access the argument\'92s value in the caller directly but cannot modify it.\
+b. All arguments in Java are passed by value.\
+c. To pass an individual array element to a method, use the indexed name of the array.\
+d. To pass an object reference to a method, simply specify in the method call the name of the variable that refers to the object.\
+\
+\
+7.9 Q2: When you pass an array or an individual array element of a reference type to a method, the called method receives ________. When you pass an individual element of a primitive type, the called method receives ________.\
+a. a copy of the element\'92s reference, a copy of the element\'92s reference\
+b. a copy of the element\'92s value, a copy of the element\'92s reference\
+c. a copy of the element\'92s value, a copy of the element\'92s value\
+d. a copy of the element\'92s reference, a copy of the element\'92s value\
+\
+Section 7.10  Case Study: Class GradeBook Using an Array to Store Grades\
+Class GradeBookTest That Demonstrates Class GradeBook\
+\
+7.10 Q1: What kind of application tests a class by creating an object of that class and calling the class\'92s methods?\
+a. Pseudo application.\
+b. Debugger.\
+c. Declarator.\
+d. Test harness.\
+\
+\
+///Lab18\
+1. Identify the superclass and the subclass in each of the following pairs of classes.\
+a. Employee, Manager\
+b. Polygon, Triangle\
+c. GraduateStudent, Student\
+d. Person, Student\
+e. Employee, GraduateStudent\
+f. BankAccount, CheckingAccount\
+g. Vehicle, Car\
+h. Vehicle, Minivan\
+i. Car, Minivan\
+j. Truck, Vehicle\
+2.In an object-oriented traffic simulation system, we have the following classes:\
+\'95 Vehicle\
+\'95 Car\
+\'95 Truck\
+\'95 Sedan\
+\'95 Coupe\
+\'95 PickupTruck\
+\'95 SportUtilityVehicle\
+\'95 Minivan\
+\'95 Bicycle\
+\'95 Motorcycle\
+Draw an inheritance diagram that shows the relationships between these classes.\
+3. Implement a superclass Person. Make two classes, Student and Instructor, that inherit from Person. A person has a name and a year of birth. A student has a major, and an instructor has a salary. Write the class declarations, the constructors, and the methods toString for all classes. Supply a test program that tests these classes and methods.\
+4. Implement a class Employee with a name and salary. Implement a class Manager inherit from Employee. Add an instance variable, named department, of type String. Supply a method toString that prints the manager\'92s name, department, and salary. Implement a class Executive inherit from Manager. Supply appropriate toString methods for all classes. Supply a test program that tests these classes and methods.\
+Chapter 9 Object Oriented Programming: Inheritance\
+Section 9.1 Introduction\
+\
+9.1 Q1: Which of the following statements is false?\
+a.	A subclass is often larger than its superclass.\
+b.	A superclass object is a subclass object.\
+c.	The class following the extends keyword in a class declaration is the direct superclass of the class being declared.\
+d.	Java uses interfaces to provide the benefits of multiple inheritance.\
+\
+9.1 Q2: Inheritance is also known as the \
+a.	knows-a relationship.\
+b.	has-a relationship.\
+c.	uses-a relationship.\
+d.	is-a relationship.\
+\
+Section 9.2 Superclasses and Subclasses\
+\
+9.2 Q1: Which of the following is not a superclass/subclass relationship?\
+a.	Employee/Hourly Employee.\
+b.	Vehicle/Car.\
+c.	Sailboat/Tugboat.\
+d.	None of the above.\
+\
+9.2 Q2: An advantage of inheritance is that:\
+a.	All methods can be inherited.\
+b.	All instance variables can be uniformly accessed by subclasses and superclasses.\
+c.	Objects of a subclass can be treated like objects of their superclass.\
+d.	None of the above.\
+ \
+Section 9.3 protected Members\
+\
+9.3 Q1: Which of the following keywords allows a subclass to access a superclass method even when the subclass has overridden the superclass method?\
+a.	base.\
+b.	this.\
+c.	public.\
+d.	super.\
+\
+9.3 Q2: Using the protected keyword also gives a member:\
+a.	public access.\
+b.	package access.\
+c.	private access.\
+d.	block scope.\
+\
+9.3 Q3: Superclass methods with this level of access cannot be called from subclasses.\
+a.	private.\
+b.	public.\
+c.	protected.\
+d.	package.\
+\
+Section 9.4 Relationship between Superclasses and Subclasses\
+9.4 Q1: Which of the following statements is false?\
+a. A class can directly inherit from class Object.\
+b. It's often much more efficient to create a class by inheriting from a similar class than to create the class by writing every line of code the new class requires.\
+c. If the class you're inheriting from declares instance variables as private, the inherited class can access those instance variables directly.\
+d. A class's instance variables are normally declared private to enforce good software engineering.\
+\
+Section 9.4.1 Creating and Using a CommissionEmployee Class\
+\
+9.4.1 Q1: Every class in Java, except ________, extends an existing class.\
+a.	Integer.\
+b.	Object.\
+c.	String.\
+d.	Class.\
+\
+\
+9.4.1 Q2: Overriding a method differs from overloading a method because:\
+a.	Overloaded methods have the same signature.\
+b.	Overridden methods have the same signature.\
+c.	Both of the above. \
+d.	Neither of the above.\
+ \
+\
+9.4.2 Q1: To avoid duplicating code, use ________, rather than ________.\
+a.	inheritance, the \'93copy-and-past\'94 approach.\
+b.	the \'93copy-and-paste\'94 approach, inheritance.\
+c.	a class that explicitly extends Object, a class that does not extend Object.\
+d.	a class that does not extend Object, a class that explicitly extends Object.\
+\
+9.4.3 Q1: Consider the classes below, declared in the same file:\
+class A \
+\{\
+   int a;\
+   public A() \
+   \{\
+      a = 7;\
+   \}\
+\}\
+\
+class B extends A \
+\{\
+   int b;\
+   public B() \
+   \{\
+b = 8;\
+   \}	\
+\}\
+\
+Which of the statements below is false?\
+a.	Both variables a and b are instance variables.\
+b.	After the constructor for class B executes, the variable a will have the value 7.\
+c.	After the constructor for class B executes, the variable b will have the value 8.\
+d.	A reference of type A can be treated as a reference of type B.\
+\
+\
+9.4.3 Q2: Which of the following is the superclass constructor call syntax?\
+a.	keyword super, followed by a dot (.) .\
+b.	keyword super, followed by a set of parentheses containing the superclass constructor arguments.\
+c.	keyword super, followed by a dot and the superclass constructor name.\
+d.	None of the above.\
+\
+\
+9.4.4 Q1: Which superclass members are inherited by all subclasses of that superclass?\
+a.	private instance variables and methods.\
+b.	protected instance variables and methods.\
+c.	private constructors.\
+d.	protected constructors.\
+\
+9.4.4 Q2: Which statement is true when a superclass has protected instance variables?\
+a.	A subclass object can assign an invalid value to the superclass\'92s instance variables, thus leaving an object in an inconsistent state.\
+b.	Subclass methods are more likely to be written so that they depend on the superclass\'92s data implementation.\
+c.	We may need to modify all the subclasses of the superclass if the superclass implementation changes.\
+d.	All of the above.\
+\
+Section 9.4.5 CommissionEmployee-BasePlusCommissionEmployee Inheritance Hierarchy Using private Instance Variables\
+\
+9.4.5 Q1: private fields of a superclass can be accessed in a subclass\
+a.	by calling private methods declared in the superclass.\
+b.	by calling public or protected methods declared in the superclass.\
+c.	directly.\
+d.	All of the above.\
+\
+9.4.5 Q2: When overriding a superclass method and calling the superclass version from the subclass method, failure to prefix the superclass method name with the keyword super and a dot (.) in the superclass method call causes ________.\
+a.	a compile-time error.\
+b.	a syntax error.\
+c.	infinite recursion.\
+d.	a runtime error.\
+\
+Section 9.5 Constructors in Subclasses\
+\
+9.5 Q1: When a subclass constructor calls its superclass constructor, what happens if the superclass\'92s constructor does not assign a value to an instance variable?\
+a.	A syntax error occurs.\
+b.	A compile-time error occurs.\
+c.	A run-time error occurs.\
+d.	The program compiles and runs because the instance variables are initialized to their default values.\
+\
+9.6 Q1: The default implementation of method clone of Object performs a ________.\
+a.	empty copy.\
+b.	deep copy.\
+c.	full copy.\
+d.	shallow copy.\
+\
+9.6 Q2: The default equals implementation of class Object determines:\
+a.	whether two references refer to the same object in memory.\
+b.	whether two references have the same type.\
+c.	whether two objects have the same instance variables.\
+d.	whether two objects have the same instance variable values.\
+\
+\
+///Lab19\
+1. Implement a Java method public static void rotate(ArrayList<Integer>list)that rotates the elements of an array list by one position, moving the initial element to the end of the array, like this: \
+3 5 7 11 13 2 => 5 7 11 13 2 3\
+Use the above example to test your code.\
+2. Implement a Java method public static void deleteNegative(ArrayList<Integer>list)  that removes all negative values from an array, preserving the order of the remaining elements. For example:\
+-3 5 7 -11 -13 2 0 => 5 7 2 0 \
+Use the above example to test your code.\
+3. Write a method public static ArrayList<Integer> merge(ArrayList<Integer> a, ArrayList<Integer> b) that merges two array lists, alternating elements from both array lists. If one array list is shorter than the other, then alternate as long as you can and then append the remaining elements from the longer array list. For example, if a is 1 4 9 16 and b is 9 7 4 9 11 then merge returns the array list 1 9 4 7 9 4 16 9 11.\
+Use the above example to test your code.\
+4. Given the following class Coin, implement its overriding toString()  and equals() methods.\
+      public class Coin\{\
+           private double value;\
+           private String name;\
+      \}\
+Implement a CoinTest class to test your code.\
+\
+///Lab20\
+1. Modify the payroll system discussed in the class to include private instance variable birthDate in class Employee. Use class Date of Fig. 8.7 to represent an employee\'92s birthday. Add get methods to class Date. Assume that payroll is processed once per month. Create an array of Employee variables to store references to the various employee objects. In a loop, calculate the payroll for each Employee (polymorphically), and add a $100.00 bonus to the person\'92s payroll amount if the current month is the one in which the Employee\'92s birthday occurs. SalariedEmployee.javaView in a new window, PayrollSystemTest.javaView in a new window, HourlyEmployee.javaView in a new window, Employee.javaView in a new window, CommissionEmployee.javaView in a new window, BasePlusCommissionEmployee.javaView in a new window, Date.java\
+###\
+// Fig. 10.5: SalariedEmployee.java\
+// SalariedEmployee concrete class extends abstract class Employee.\
+\
+public class SalariedEmployee extends Employee \
+\{\
+   private double weeklySalary;\
+\
+   // constructor\
+   public SalariedEmployee(String firstName, String lastName, \
+      String socialSecurityNumber, double weeklySalary)\
+   \{\
+      super(firstName, lastName, socialSecurityNumber); \
+\
+      if (weeklySalary < 0.0)\
+         throw new IllegalArgumentException(\
+            "Weekly salary must be >= 0.0");\
+\
+      this.weeklySalary = weeklySalary;\
+   \} \
+\
+   // set salary\
+   public void setWeeklySalary(double weeklySalary)\
+   \{\
+      if (weeklySalary < 0.0)\
+         throw new IllegalArgumentException(\
+            "Weekly salary must be >= 0.0");\
+\
+      this.weeklySalary = weeklySalary;\
+   \} \
+\
+   // return salary\
+   public double getWeeklySalary()\
+   \{\
+      return weeklySalary;\
+   \} \
+\
+   // calculate earnings; override abstract method earnings in Employee\
+   @Override                                                           \
+   public double earnings()                                            \
+   \{                                                                   \
+      return getWeeklySalary();                                        \
+   \}                                             \
+\
+   // return String representation of SalariedEmployee object   \
+   @Override                                                    \
+   public String toString()                                     \
+   \{                                                            \
+      return String.format("salaried employee: %s%n%s: $%,.2f",\
+         super.toString(), "weekly salary", getWeeklySalary());\
+   \} \
+\} // end class SalariedEmployee\
+###\
+// Fig. 10.9: PayrollSystemTest.java\
+// Employee hierarchy test program.\
+\
+public class PayrollSystemTest \
+\{\
+   public static void main(String[] args) \
+   \{\
+      // create subclass objects\
+      SalariedEmployee salariedEmployee = \
+         new SalariedEmployee("John", "Smith", "111-11-1111", 800.00);\
+      HourlyEmployee hourlyEmployee = \
+         new HourlyEmployee("Karen", "Price", "222-22-2222", 16.75, 40);\
+      CommissionEmployee commissionEmployee = \
+         new CommissionEmployee(\
+         "Sue", "Jones", "333-33-3333", 10000, .06);\
+      BasePlusCommissionEmployee basePlusCommissionEmployee = \
+         new BasePlusCommissionEmployee(\
+         "Bob", "Lewis", "444-44-4444", 5000, .04, 300);\
+\
+      System.out.println("Employees processed individually:");\
+      \
+      System.out.printf("%n%s%n%s: $%,.2f%n%n", \
+         salariedEmployee, "earned", salariedEmployee.earnings());\
+      System.out.printf("%s%n%s: $%,.2f%n%n",\
+         hourlyEmployee, "earned", hourlyEmployee.earnings());\
+      System.out.printf("%s%n%s: $%,.2f%n%n",\
+         commissionEmployee, "earned", commissionEmployee.earnings());\
+      System.out.printf("%s%n%s: $%,.2f%n%n", \
+         basePlusCommissionEmployee, \
+         "earned", basePlusCommissionEmployee.earnings());\
+\
+      // create four-element Employee array\
+      Employee[] employees = new Employee[4]; \
+\
+      // initialize array with Employees\
+      employees[0] = salariedEmployee;\
+      employees[1] = hourlyEmployee;\
+      employees[2] = commissionEmployee; \
+      employees[3] = basePlusCommissionEmployee;\
+\
+      System.out.printf("Employees processed polymorphically:%n%n");\
+      \
+      // generically process each element in array employees\
+      for (Employee currentEmployee : employees) \
+      \{\
+         System.out.println(currentEmployee); // invokes toString\
+\
+         // determine whether element is a BasePlusCommissionEmployee\
+         if (currentEmployee instanceof BasePlusCommissionEmployee) \
+         \{\
+            // downcast Employee reference to \
+            // BasePlusCommissionEmployee reference\
+            BasePlusCommissionEmployee employee = \
+               (BasePlusCommissionEmployee) currentEmployee;\
+\
+            employee.setBaseSalary(1.10 * employee.getBaseSalary());\
+\
+            System.out.printf(\
+               "new base salary with 10%% increase is: $%,.2f%n",\
+               employee.getBaseSalary());\
+         \} \
+\
+         System.out.printf(\
+            "earned $%,.2f%n%n", currentEmployee.earnings());\
+      \} \
+\
+      // get type name of each object in employees array\
+      for (int j = 0; j < employees.length; j++)\
+         System.out.printf("Employee %d is a %s%n", j, \
+            employees[j].getClass().getName()); \
+   \} // end main\
+\} // end class PayrollSystemTest\
+###\
+// Fig. 10.6: HourlyEmployee.java\
+// HourlyEmployee class extends Employee.\
+\
+public class HourlyEmployee extends Employee \
+\{\
+   private double wage; // wage per hour\
+   private double hours; // hours worked for week\
+\
+   // constructor\
+   public HourlyEmployee(String firstName, String lastName,\
+      String socialSecurityNumber, double wage, double hours)\
+   \{\
+      super(firstName, lastName, socialSecurityNumber);\
+\
+      if (wage < 0.0) // validate wage\
+         throw new IllegalArgumentException(\
+            "Hourly wage must be >= 0.0");\
+\
+      if ((hours < 0.0) || (hours > 168.0)) // validate hours\
+         throw new IllegalArgumentException(\
+            "Hours worked must be >= 0.0 and <= 168.0");\
+\
+      this.wage = wage;\
+      this.hours = hours;\
+   \} \
+\
+   // set wage\
+   public void setWage(double wage)\
+   \{\
+      if (wage < 0.0) // validate wage\
+         throw new IllegalArgumentException(\
+            "Hourly wage must be >= 0.0");\
+\
+      this.wage = wage;\
+   \} \
+\
+   // return wage\
+   public double getWage()\
+   \{\
+      return wage;\
+   \} \
+\
+   // set hours worked\
+   public void setHours(double hours)\
+   \{\
+      if ((hours < 0.0) || (hours > 168.0)) // validate hours\
+         throw new IllegalArgumentException(\
+            "Hours worked must be >= 0.0 and <= 168.0");\
+\
+      this.hours = hours;\
+   \} \
+\
+   // return hours worked\
+   public double getHours()\
+   \{\
+      return hours;\
+   \} \
+\
+   // calculate earnings; override abstract method earnings in Employee\
+   @Override                                                           \
+   public double earnings()                                            \
+   \{                                                                   \
+      if (getHours() <= 40) // no overtime                           \
+         return getWage() * getHours();                                \
+      else                                                             \
+         return 40 * getWage() + (getHours() - 40) * getWage() * 1.5;\
+   \}                                          \
+\
+   // return String representation of HourlyEmployee object              \
+   @Override                                                             \
+   public String toString()                                              \
+   \{                                                                     \
+      return String.format("hourly employee: %s%n%s: $%,.2f; %s: %,.2f",\
+         super.toString(), "hourly wage", getWage(),                     \
+         "hours worked", getHours());                                   \
+   \}                                    \
+\} // end class HourlyEmployee\
+\
+###\
+/ Fig. 10.4: Employee.java\
+// Employee abstract superclass.\
+\
+public abstract class Employee \
+\{\
+   private final String firstName;\
+   private final String lastName;\
+   private final String socialSecurityNumber;\
+\
+   // constructor\
+   public Employee(String firstName, String lastName, \
+      String socialSecurityNumber)\
+   \{\
+      this.firstName = firstName;                                    \
+      this.lastName = lastName;                                    \
+      this.socialSecurityNumber = socialSecurityNumber;         \
+   \} \
+\
+   // return first name\
+   public String getFirstName()\
+   \{\
+      return firstName;\
+   \} \
+\
+   // return last name\
+   public String getLastName()\
+   \{\
+      return lastName;\
+   \} \
+\
+   // return social security number\
+   public String getSocialSecurityNumber()\
+   \{\
+      return socialSecurityNumber;\
+   \} \
+\
+   // return String representation of Employee object\
+   @Override\
+   public String toString()\
+   \{\
+      return String.format("%s %s%nsocial security number: %s", \
+         getFirstName(), getLastName(), getSocialSecurityNumber());\
+   \} \
+\
+   // abstract method must be overridden by concrete subclasses\
+   public abstract double earnings(); // no implementation here\
+\} // end abstract class Employee\
+###\
+// Fig. 10.7: CommissionEmployee.java\
+// CommissionEmployee class extends Employee.\
+\
+public class CommissionEmployee extends Employee \
+\{\
+   private double grossSales; // gross weekly sales\
+   private double commissionRate; // commission percentage\
+\
+   // constructor\
+   public CommissionEmployee(String firstName, String lastName, \
+      String socialSecurityNumber, double grossSales, \
+      double commissionRate)\
+   \{\
+      super(firstName, lastName, socialSecurityNumber);\
+\
+      if (commissionRate <= 0.0 || commissionRate >= 1.0) // validate \
+         throw new IllegalArgumentException(\
+            "Commission rate must be > 0.0 and < 1.0");\
+\
+      if (grossSales < 0.0) // validate\
+         throw new IllegalArgumentException("Gross sales must be >= 0.0");\
+\
+      this.grossSales = grossSales;\
+      this.commissionRate = commissionRate;\
+   \} \
+\
+   // set gross sales amount\
+   public void setGrossSales(double grossSales)\
+   \{\
+      if (grossSales < 0.0) // validate\
+         throw new IllegalArgumentException("Gross sales must be >= 0.0");\
+\
+      this.grossSales = grossSales;\
+   \} \
+\
+   // return gross sales amount\
+   public double getGrossSales()\
+   \{\
+      return grossSales;\
+   \} \
+\
+   // set commission rate\
+   public void setCommissionRate(double commissionRate)\
+   \{\
+      if (commissionRate <= 0.0 || commissionRate >= 1.0) // validate\
+         throw new IllegalArgumentException(\
+            "Commission rate must be > 0.0 and < 1.0");\
+\
+      this.commissionRate = commissionRate;\
+   \} \
+\
+   // return commission rate\
+   public double getCommissionRate()\
+   \{\
+      return commissionRate;\
+   \} \
+\
+   // calculate earnings; override abstract method earnings in Employee\
+   @Override                                                           \
+   public double earnings()                                            \
+   \{                                                                   \
+      return getCommissionRate() * getGrossSales();                    \
+   \}                                             \
+\
+   // return String representation of CommissionEmployee object\
+   @Override                                                   \
+   public String toString()                                    \
+   \{                                                           \
+      return String.format("%s: %s%n%s: $%,.2f; %s: %.2f",    \
+         "commission employee", super.toString(),              \
+         "gross sales", getGrossSales(),                       \
+         "commission rate", getCommissionRate());             \
+   \} \
+\} // end class CommissionEmployee\
+###\
+/ Fig. 10.8: BasePlusCommissionEmployee.java\
+// BasePlusCommissionEmployee class extends CommissionEmployee.\
+\
+public class BasePlusCommissionEmployee extends CommissionEmployee \
+\{\
+   private double baseSalary; // base salary per week\
+\
+   // constructor\
+   public BasePlusCommissionEmployee(String firstName, String lastName, \
+      String socialSecurityNumber, double grossSales,\
+      double commissionRate, double baseSalary)\
+   \{\
+      super(firstName, lastName, socialSecurityNumber, \
+         grossSales, commissionRate);\
+\
+      if (baseSalary < 0.0) // validate baseSalary                  \
+         throw new IllegalArgumentException("Base salary must be >= 0.0");\
+            \
+      this.baseSalary = baseSalary;                \
+   \}\
+\
+   // set base salary\
+   public void setBaseSalary(double baseSalary)\
+   \{\
+      if (baseSalary < 0.0) // validate baseSalary                  \
+         throw new IllegalArgumentException("Base salary must be >= 0.0");\
+            \
+      this.baseSalary = baseSalary;                \
+   \} \
+\
+   // return base salary\
+   public double getBaseSalary()\
+   \{\
+      return baseSalary;\
+   \}\
+\
+   // calculate earnings; override method earnings in CommissionEmployee\
+   @Override                                                            \
+   public double earnings()                                             \
+   \{                                                                    \
+      return getBaseSalary() + super.earnings();                        \
+   \} \
+\
+   // return String representation of BasePlusCommissionEmployee object\
+   @Override                                                           \
+   public String toString()                                            \
+   \{                                                                   \
+      return String.format("%s %s; %s: $%,.2f",                       \
+         "base-salaried", super.toString(),                            \
+         "base salary", getBaseSalary());                             \
+   \} \
+\} // end class BasePlusCommissionEmployee\
+###\
+// Fig. 8.7: Date.java \
+// Date class declaration.\
+\
+public class Date \
+\{\
+   private int month; // 1-12\
+   private int day; // 1-31 based on month\
+   private int year; // any year\
+\
+   private static final int[] daysPerMonth = \
+      \{0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31\};\
+   \
+   // constructor: confirm proper value for month and day given the year\
+   public Date(int month, int day, int year)\
+   \{\
+      // check if month in range\
+      if (month <= 0 || month > 12)\
+         throw new IllegalArgumentException(\
+            "month (" + month + ") must be 1-12");\
+\
+      // check if day in range for month\
+      if (day <= 0 || \
+         (day > daysPerMonth[month] && !(month == 2 && day == 29)))\
+         throw new IllegalArgumentException("day (" + day + \
+            ") out-of-range for the specified month and year");\
+\
+      // check for leap year if month is 2 and day is 29\
+      if (month == 2 && day == 29 && !(year % 400 == 0 || \
+           (year % 4 == 0 && year % 100 != 0)))\
+         throw new IllegalArgumentException("day (" + day +\
+            ") out-of-range for the specified month and year");\
+\
+      this.month = month;\
+      this.day = day;\
+      this.year = year;\
+\
+      System.out.printf(\
+         "Date object constructor for date %s%n", this);\
+   \} \
+\
+   // return day\
+   public int getDay()\
+   \{\
+      return day;\
+   \}\
+\
+   // return month\
+   public int getMonth()\
+   \{\
+      return month;\
+   \}\
+\
+   // return year\
+   public int getYear()\
+   \{\
+      return year;\
+   \}\
+\
+   // return a String of the form month/day/year\
+   public String toString()\
+   \{ \
+      return String.format("%d/%d/%d", getMonth(), getDay(), getYear()); \
+   \} \
+\} // end class Date\
+###\
+Chapter 10: Object-Oriented Programming: Polymorphism\
+Section 10.1  Introduction\
+\
+10.1 Q1: Polymorphism enables you to:\
+a. program in the general.\
+b. program in the specific.\
+c. absorb attributes and behavior from previous classes.\
+d. hide information from the user.\
+\
+\
+Section 10.2  Polymorphism Examples\
+\
+10.2 Q1: For which of the following would polymorphism not provide a clean solution?\
+a. A billing program where there is a variety of client types that are billed with different fee structures.\
+b. A maintenance log program where data for a variety of types of machines is collected and maintenance schedules are produced for each machine based on the data collected.\
+c. A program to compute a 5% savings account interest for a variety of clients.\
+d. An IRS program that maintains information on a variety of taxpayers and determines who to audit based on criteria for classes of taxpayers.\
+\
+\
+10.2 Q2: Polymorphism allows for specifics to be dealt with during: \
+a. execution.\
+b. compilation.\
+c. programming.\
+d. debugging.\
+\
+Section 10.3  Demonstrating Polymorphic Behavior\
+\
+10.3 Q1: Which statement best describes the relationship between superclass and subclass types?\
+a. A subclass reference cannot be assigned to a superclass variable and a superclass reference cannot be assigned to a subclass variable.\
+b. A subclass reference can be assigned to a superclass variable and a superclass reference can be assigned to a subclass variable.\
+c. A superclass reference can be assigned to a subclass variable, but a subclass reference cannot be assigned to a superclass variable.\
+d. A subclass reference can be assigned to a superclass variable, but a superclass reference cannot be assigned to a subclass variable.\
+\
+Section 10.4  Abstract Classes and Methods\
+\
+10.4 Q1: A(n)          class cannot be instantiated.\
+a. final.\
+b. concrete.\
+c. abstract.\
+d. polymorphic.\
+\
+10.4 Q2: Non-abstract classes are called ________.\
+a. real classes.\
+b. instance classes.\
+c. implementable classes.\
+d. concrete classes.\
+\
+Section 10.5  Case Study: Payroll System Using Polymorphism\
+\
+10.5 Q1: It is a UML convention to denote the name of an abstract class in ________.\
+a. bold.\
+b. italics.\
+c. a diamond.\
+d. there is no convention of the UML to denote abstract classes\'97they are listed just as any other class.\
+\
+10.5 Q2: If the superclass contains only abstract method declarations, the superclass is used for ________.\
+a. implementation inheritance.\
+b. interface inheritance.\
+c. Both.\
+d. Neither.\
+\
+Section 10.5.1 Abstract Superclass Employee\
+\
+10.5.1 Q1: Which of the following could be used to declare abstract method method1 in abstract class Class1 (method1 returns an int and takes no arguments)?\
+a. public int method1(); \
+b. public int abstract method1(); \
+c. public abstract int method1(); \
+d. public int nonfinal method1(); \
+\
+10.5.1 Q2: Which of the following statements about abstract superclasses is true?\
+a. abstract superclasses may contain data.\
+b. abstract superclasses may not contain implementations of methods.\
+c. abstract superclasses must declare all methods as abstract.\
+d. abstract superclasses must declare all data members not given values as abstract.\
+\
+Section 10.5.2  Concrete Subclass SalariedEmployee\
+\
+10.5.2 Q1: Consider the abstract superclass below:\
+public abstract class Foo\uc0\u8232 \{\u8232    private int a;\u8232    public int b;\u8232 \u8232    public Foo(int aVal, int bVal)\u8232    \{\u8232       a = aVal;\u8232       b = bVal;\u8232    \}\u8232 \u8232    public abstract int calculate();\u8232 \} \
+Any concrete subclass that extends class Foo:\
+a. Must implement a method called calculate.\
+b. Will not be able to access the instance variable a.\
+c. Neither (a) nor (b).\
+d. Both (a) and (b).\
+\
+\
+Section 10.5.5 Indirect Concrete Subclass BasePlusCommissionEmployee\
+\
+10.5.5 Q1: Consider classes A, B and C, where A is an abstract superclass, B is a concrete class that inherits from A and C is a concrete class that inherits from B. Class A declares abstract method originalMethod, implemented in class B. Which of the following statements is true of class C?\
+a. Method originalMethod cannot be overridden in class C\'97once it has been implemented in concrete class B, it is implicitly final.\
+b. Method originalMethod must be overridden in class C, or a compilation error will occur.\
+c. If method originalMethod is not overridden in class C but is called by an object of class C, an error occurs.\
+d. None of the above.\
+\
+Section 10.5.6 Polymorphic Processing, Operator instanceof and Downcasting\
+\
+10.5.6 Q1: When a superclass variable refers to a subclass object and a method is called on that object, the proper implementation is determined at execution time. What is the process of determining the correct method to call?\
+a. early binding.\
+b. non-binding.\
+c. on-time binding.\
+d. late binding.\
+\
+10.5.6 Q2: Every object in Java knows its own class and can access this information through method         .\
+a. getClass.\
+b. getInformation.\
+c. objectClass.\
+d. objectInformation.\
+\
+Section 10.6  Allowed Assignments Between Superclass and Subclass Variables\
+\
+10.6 Q1: Assigning a subclass reference to a superclass variable is safe ________.\
+a. because the subclass object has an object of its superclass.\
+b. because the subclass object is an object of its superclass.\
+c. only when the superclass is abstract.\
+///Lab22\
+1. (instanceof Method) Given Rectangle r = new Rectangle(5, 10, 20, 30), which of these conditions returns true? Check the Java documentation for the inheritance patterns.\
+(a) r instanceof Rectangle \
+(b) r instanceof Point \
+(c) r instanceof Rectangle2D.Double \
+(d) r instanceof RectangularShape\
+(e) r instanceof Object\
+(f) r instanceof Shape\
+2. Implement copy constructor for each class in the BankAccount class hierarchy, using the provided class files. The copy constructor should call super class's copy constructor, instated of other overloaded constructor. Additionally, implement overloading toString() for each class to display the contents of the class object.\
+###\
+/**\
+   A bank account has a balance that can be changed by \
+   deposits and withdrawals.\
+*/\
+public class BankAccount\
+\{  \
+   private double balance; \
+\
+   /**\
+      Constructs a bank account with a zero balance.\
+   */\
+   public BankAccount()\
+   \{  \
+      balance = 0;\
+   \}\
+\
+   /**\
+      Constructs a bank account with a given balance.\
+      @param initialBalance the initial balance\
+   */\
+   public BankAccount(double initialBalance)\
+   \{  \
+      balance = initialBalance;\
+   \}\
+ \
+   /**\
+      Deposits money into the bank account.\
+      @param amount the amount to deposit\
+   */\
+   public void deposit(double amount) \
+   \{  \
+      balance = balance + amount;\
+   \}\
+\
+   /**\
+      Withdraws money from the bank account.\
+      @param amount the amount to withdraw\
+   */\
+   public void withdraw(double amount) \
+   \{  \
+      balance = balance - amount;\
+   \}\
+\
+   /**\
+      Gets the current balance of the bank account.\
+      @return the current balance\
+   */\
+   public double getBalance()\
+   \{  \
+      return balance; \
+   \}\
+   \
+   /**\
+      Transfers money from the bank account to another account\
+      @param amount the amount to transfer\
+      @param other the other account\
+   */\
+//   public void transfer(double amount, BankAccount other)\
+//   \{  \
+//      withdraw(amount);\
+//      other.deposit(amount);\
+//   \}\
+\}\
+###\
+/**\
+   A checking account that charges transaction fees.\
+*/\
+public class CheckingAccount extends BankAccount\
+\{  \
+   private static final int FREE_TRANSACTIONS = 3;\
+   private static final double TRANSACTION_FEE = 2.5;\
+\
+   private int transactionCount;\
+\
+   /**\
+      Constructs a checking account with a given balance.\
+      @param initialBalance the initial balance\
+   */\
+   public CheckingAccount(double initialBalance)\
+   \{  \
+      // Construct superclass\
+      super(initialBalance);\
+      \
+      // Initialize transaction count\
+      transactionCount = 0; \
+   \}\
+\
+   public void deposit(double amount) \
+   \{  \
+      transactionCount++;\
+      // Now add amount to balance \
+      super.deposit(amount); \
+   \}\
+   \
+   public void withdraw(double amount) \
+   \{  \
+      transactionCount++;\
+      // Now subtract amount from balance \
+      super.withdraw(amount); \
+   \}\
+\
+   /**\
+      Deducts the accumulated fees and resets the\
+      transaction count.\
+   */\
+   public void deductFees()\
+   \{  \
+      if (transactionCount > FREE_TRANSACTIONS)\
+      \{  \
+         double fees = TRANSACTION_FEE *\
+               (transactionCount - FREE_TRANSACTIONS);\
+         super.withdraw(fees);\
+      \}\
+      transactionCount = 0;\
+   \}\
+\}\
+###\
+/**\
+   An account that earns interest at a fixed rate.\
+*/\
+public class SavingsAccount extends BankAccount\
+\{  \
+   private double interestRate;\
+\
+   /**\
+      Constructs a bank account with a given interest rate.\
+      @param rate the interest rate\
+   */\
+   public SavingsAccount(double initialBalance,double rate) \
+   \{  \
+      super(initialBalance);\
+      interestRate = rate;\
+   \}\
+\
+   /**\
+      Adds the earned interest to the account balance.\
+   */\
+   public void addInterest() \
+   \{  \
+      double interest = getBalance() * interestRate / 100;\
+      deposit(interest); \
+   \}\
+\}\
+###\
+/**\
+   This program tests the BankAccount class and\
+   its subclasses. \
+*/\
+public class BankAccountTest\
+\{  \
+   public static void main(String[] args)\
+   \{  \
+      SavingsAccount momsSavings = new SavingsAccount(50,0.5);\
+      System.out.println("*****momsSaving*****");\
+      System.out.println(momsSavings);\
+      System.out.println();\
+      SavingsAccount momsSavingsDeepCopy = new SavingsAccount(momsSavings);\
+      System.out.println("*****momsSavingDeepCopy*****");\
+      System.out.println(momsSavingsDeepCopy);\
+\
+      CheckingAccount harrysChecking = new CheckingAccount(100);\
+      System.out.println("*****harrysChecking*****");\
+      System.out.println(harrysChecking);\
+      System.out.println();\
+      CheckingAccount harrysCheckingDeepCopy = new CheckingAccount(harrysChecking);\
+      System.out.println("*****momsSavingDeepCopy*****");\
+      System.out.println(harrysCheckingDeepCopy);\
+   \}\
+\}\
+///Lab23\
+1. What are the outputs of the following Java code?\
+public class Test\
+\{\
+    public static String lessThan100( int number ) throws Exception\
+    \{\
+	if ( number >= 100 )\
+	    throw new Exception( "Number too large." );\
+\
+	return String.format( "The number %d is less than 100", number );\
+    \}\
+\
+    public static void main( String args[] )\
+    \{\
+	try\
+	    \{\
+		System.out.println( lessThan100( 1 ) );\
+		System.out.println( lessThan100( 22 ) );\
+		System.out.println( lessThan100( 100 ) );\
+		System.out.println( lessThan100( 11 ) );\
+	    \}\
+	catch( Exception exception )\
+	    \{\
+		System.out.println( exception.toString() );\
+	    \}\
+	System.out.println("Main method completed successfully.");\
+    \} // end main method\
+\} // end class Test\
+2. Based on the Q3.java code, provide the value returned by Q3 if the call doIt:\
+a) throw new NullPointerException()\
+b) throw new ArithmeticException()\
+c) throw new IOException()\
+d) throw new FileNotFoundException()\
+e) complete successfully\
+public static int Q3 () throws IOException \{\
+    int value = 10;\
+    try \{\
+	value = 3;\
+	doIt ();\
+	value = 5;\
+    \} \
+    catch (NullPointerException e) \
+	\{\
+	    value = value + 4;\
+	\} \
+    catch (RuntimeException e) \
+	\{\
+	    value = value + 20;\
+	\}\
+    catch (FileNotFoundException e)\
+	\{\
+	    value = value + 5;\
+	\}\
+    finally\
+	\{\
+	    value++;\
+	\}\
+    value=value+100;\
+    return value;\
+\}\
+Chapter 11: Exception Handling\
+Section 11.1  Introduction\
+\
+11.1 Q1: Which of the following statements is false?\
+a. Exception handling enables programmers to write robust and fault-tolerant programs.\
+b. Exception handling can catch but not resolve exceptions.\
+c. Exception handling can resolve exceptions.\
+d. All of the above are true.\
+\
+Section 11.2  Example: Divide By Zero Without Exception Handling\
+\
+11.2 Q1: When an exception occurs it is said to have been ________.\
+a. caught.\
+b. thrown.\
+c. declared.\
+d. handled.\
+\
+\
+11.2 Q2: Which of the following is not included in an exception\'92s stack trace?\
+a. A descriptive message for the exception.\
+b. The method-call stack at the time the exception occurred.\
+c. The name of the exception.\
+d. Instructions on handling the exception.\
+\
+\
+11.2 Q3: Which of the following statements regarding the throw point of an exception is false?\
+a. It specifies the point at which the exception must be handled.\
+b. It is the initial point at which the exception occurs.\
+c. It is specified as the top row of the method-call stack at the time the exception occurred.\
+d. All of the above statements are true.\
+\
+Section 11.3  Example: Handling ArithmeticExceptions and InputMismatchExceptions\
+11.3 Q1: To catch an exception, the code that might throw the exception must be enclosed in a ________.\
+a. throws block.\
+b. catch block.\
+c. try block.\
+d. finally block.\
+\
+11.3 Q2: Exceptions can be thrown by ________.\
+a. the Java Virtual Machine.\
+b. code in a try block.\
+c. calls from a try block to other methods.\
+d. All of the above.\
+\
+11.3 Q3: In the catch block below, what is e?\
+   catch (ArithmeticException e) \
+   \{ \
+      System.err.printf(e); \
+   \} \
+a. The type of the exception being caught.\
+b. The name of catch block\'92s exception parameter.\
+c. A finally block.\
+d. An exception handler.\
+\
+\
+11.3 Q4: An uncaught exception ________.\
+a. is a possible exception that never actually occurs during the execution of the program.\
+b. is an exception that occurs for which the matching catch clause is empty.\
+c. is an exception that occurs for which there are no matching catch clauses.\
+d. is another term for a thrown exception.\
+\
+\
+11.3 Q5: Which of the following statements about try blocks is true?\
+a. The try block must be followed by at least one catch block.\
+b. The try block must be followed by a finally block.\
+c. The try block should contain statements that may process an exception.\
+d. The try block should contain statements that may throw an exception.\
+\
+11.3 Q6: In Java, after an exception is handled, control resumes         . This is known as the          model of exception handling.\
+a. after the last catch block (or the finally block, if there is one), termination\
+b. after the last catch block (or the finally block, if there is one), resumption\
+c. just after the throw point, termination\
+d. just after the throw point, resumption\
+\
+\
+11.3 Q7: What is the difference between a try block and a try statement?\
+a. There is no difference; the terms can be used interchangeably.\
+b. A try statement refers to the block of code following the keyword try, while the try block refers to the try keyword and the block of code following this keyword.\
+c. The try block refers to the keyword try followed by a block of code. The try block and its corresponding catch and/or finally clauses together form a try statement.\
+d. The try statement refers to the keyword try followed by a block of code. The try statement and its corresponding catch and/or finally clauses together form a try block.\
+\
+Using the throws Clause\
+11.3 Q8: The throws clause of a method:\
+a. specifies the exceptions a method catches.\
+b. specifies the exceptions thrown by the calling method.\
+c. specifies the exceptions a method throws.\
+d. specifies the exceptions a method throws and catches.\
+\
+Section 11.4  When to Use Exception Handling\
+\
+11.4 Q1: Which of the following errors is synchronous?\
+a. Divide by zero.\
+b. Arithmetic overflow.\
+c. Unsuccessful memory allocation.\
+d. All of the above.\
+\
+Section 11.5  Java Exception Hierarchy\
+\
+11.5 Q1: All exception classes inherit, either directly or indirectly, from ________.\
+a. class Error.\
+b. class RuntimeException.\
+c. class Throwable.\
+d. None of the above.\
+\
+\
+11.5 Q2: Which of the following exceptions is a checked exception?\
+a. ArithmeticException.\
+b. IOException.\
+c. RuntimeException.\
+d. InputMismatchException.\
+\
+\
+11.5 Q3: If the catch-or-declare requirement for a checked exception is not satisfied ________.\
+a. the compiler will issue an error message indicating that the exception must be caught.\
+b. the compiler will issue an error message indicating that the exception must be caught or declared.\
+c. a stack trace will be displayed indicating the exception that has occurred and where it occurred.\
+d. a stack trace will be displayed, along with a message indicating that the exception must be caught.\
+\
+Section 11.6  finally block\
+\
+11.6 Q1: Which of the following statements is false?\
+a. A finally block is placed after the last catch block.\
+b. A finally block typically releases resources acquired in the corresponding try block.\
+c. The finally block and try block can appear in any order.\
+d. A finally block is optional.\
+\
+11.6 Q2: Which of the following statements is true?\
+a. The code in a finally block is executed only if an exception occurs.\
+b. The code in a finally block is executed only if an exception does not occur.\
+c. The code in a finally block is executed only if there are no catch blocks.\
+d. None of the above are true.\
+\
+11.6 Q3: After a finally block has finished executing (and there are no exceptions to be handled), ________.\
+a. control proceeds to the first statement after the finally block.\
+b. control returns to the throw point.\
+c. the application exits.\
+d. control proceeds to the first statement after the last catch block.\
+\
+\
+11.6 Q4: Which of the following statements is true?\
+a. The throw statement is used to throw an exception.\
+b. The throw statement is used to specify that a method will throw an exception.\
+c. The throw statement is used to access an exception parameter.\
+d. All of the above.\
+\
+Section 11.7  Stack Unwinding and Obtaining Information from an Exception Object\
+\
+11.7 Q1: When an unchecked exception occurs in a method but is not caught, ________.\
+a. the method-call stack is \'93unwound.\'94\
+b. the method terminates.\
+c. all local variables in that method go out of scope.\
+d. All of the above.\
+\
+\
+11.7 Q2: Which of the following statements is false?\
+a. All exceptions must derive from the class Throwable.\
+b. The class Throwable provides the method getStackTrace that outputs the stack trace to the standard error stream.\
+c. The class Throwable provides the method getMessage that returns the descriptive string stored in an exception.\
+d. The string returned from class Throwable\'92s getMessage method contains the name of the exception\'92s class.\
+\
+\
+Section 11.8  Chained Exceptions\
+\
+11.8 Q1: Chained exceptions are useful for finding out about ________.\
+a. exceptions thrown using the chained keyword.\
+b. checked exceptions only.\
+c. an original exception that was caught before the current exception was thrown.\
+d. the current exception\'92s chain of superclasses.\
+\
+Section 11.9  Declaring New Exception Types\
+\
+11.9 Q1: Which of the following statements is true?\
+a. Using existing exceptions makes the program less robust.\
+b. Always create your own exception classes.\
+c. Like any other class, an exception class can contain fields and methods.\
+d. The new exception class should extend RuntimeException if the program should be required to handle the exception.\
+\
+Section 11.10  Preconditions and Postconditions\
+\
+11.10 Q1: Which of the following is true?\
+a. A precondition must be true when a method is invoked.\
+b. A postcondition must be true when a method successfully returns to its caller.\
+c. Both (a) and (b). \
+d. Neither (a) nor (b).\
+\
+Section 11.11  Assertions\
+\
+11.11 Q1: Which of the following are types of assertions?\
+a. Preconditions.\
+b. Postconditions.\
+c. Conditions in control statements.\
+d. (a) and (b). \
+ \
+Section 11.12  try-with-Resources: Automatic Resource Deallocation\
+\
+11.12 Q1: Which of the following statements about the try-with-resources statement is false?\
+a. The try-with-resources statement simplifies writing code in which you obtain a resource, use it in a try block and release the resource in a corresponding finally block..	\
+b. You allocate the resource in the parentheses following the try keyword and use the resource in the try block; then the statement implicitly calls the resource\'92s close method at the end of the try block.\
+c. You allocate the resource in the parentheses following the try keyword and use the resource in the try block; then you explicitly call the resource\'92s close method at the end of the try block.\
+d. Each resource must be an object of a class that implements the AutoCloseable interface\'97such a class has a close method.\
+\
+}

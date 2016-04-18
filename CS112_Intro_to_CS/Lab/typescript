@@ -1,0 +1,11 @@
+Script started on Thu Oct  8 10:36:14 2015
+[?1034hbash-3.2$ javac TriangleTest.java
+bash-3.2$ java TriangleTest
+side1: 3, side2: 4, side3: 5 
+side1: 5, side2: 12, side3: 13 
+Exception while initializing t3: these three sides could not form a triangle
+side1: 5, side2: 12, side3: 13 
+bash-3.2$ exit
+exit
+
+Script done on Thu Oct  8 10:36:35 2015

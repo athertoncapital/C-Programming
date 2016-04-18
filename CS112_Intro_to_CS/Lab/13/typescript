@@ -1,0 +1,15 @@
+Script started on Tue Oct 13 10:35:13 2015
+[?1034hbash-3.2$ exitjava RectangleTest[C[C[C[C[C[C[C[C[C[Cexit[Kjava RectangleTestc RectangleTest.java
+bash-3.2$ javac RectangleTest.java[C[C[C[C[C[C[C[C[C[Cexit[Kjava RectangleTest
+Rectangles before instaniation: 0
+topleft: x: 0, y: 20
+, bottomrt: x: 10, y: 0
+
+topleft: x: 0, y: 0
+, bottomrt: x: 5, y: -5
+
+Rectangles after instaniation: 2
+bash-3.2$ java RectangleTestc RectangleTest.java[C[C[C[C[C[C[C[C[C[Cexit[K
+exit
+
+Script done on Tue Oct 13 10:35:22 2015

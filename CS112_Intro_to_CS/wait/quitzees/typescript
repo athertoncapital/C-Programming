@@ -1,0 +1,18 @@
+Script started on Thu Oct  1 10:18:03 2015
+[?1034hbash-3.2$ exitjava quiz10c quiz10.java
+bash-3.2$ javac quiz10.java[C[C[C[C[C[C[C[C[C[Cexit[Kjava quiz10
+Please enter their department number:
+1
+Please enter the sales amount:
+105.00
+The bonus is: $10.5
+bash-3.2$ java quiz10
+Please enter their department number:
+15  2
+Please enter the unit sold:
+15
+The bonus is: $30.0
+bash-3.2$ exit
+exit
+
+Script done on Thu Oct  1 10:18:38 2015

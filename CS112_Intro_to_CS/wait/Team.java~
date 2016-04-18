@@ -1,0 +1,37 @@
+/******************************************************************/
+/* Author: CS112 William Chuang                                   */
+/* Date: September 13, 2015                                       */
+/* Description: Demos constructors, static vs instance methods,   */
+/*              and method overloading.                           */
+/******************************************************************/
+
+public class Account
+{
+    private String name; // instance variable
+ 
+    // method to set the name in the object              
+    public void setName(String name)      
+    {                                             
+	this.name = name; // store the name
+    }         
+
+    // method to retrieve the name from the object
+    public String getName()        
+    {                                    
+	return name; // return value of name to caller        
+    }
+    
+    private int score; // instance variable
+ 
+    // method to set the score in the object              
+    public void setScore(int score)      
+    {                                             
+	this.score = score; // store the score
+    }         
+
+    // method to retrieve the score from the object
+    public int getScore()        
+    {                                    
+	return score; // return value of score to caller        
+             
+} // end class Team

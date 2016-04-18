@@ -1,0 +1,24 @@
+Script started on Thu Oct 22 18:57:26 2015
+[?1034hbash-3.2$ exitjava InvoiceTestc InvoiceTest.java
+bash-3.2$ javac Product.java
+bash-3.2$ javac Invoice.java
+bash-3.2$ javac InvoiceTest.java
+bash-3.2$ java InvoiceTest
+Product No: 1000, Description: Hammer, Price: 14.950000, Qty: 2 
+Invoice amount: 29.90
+Exception while set invoice1: Product quantity must be positive
+Product No: 1000, Description: Hammer, Price: 5.200000.
+Exception while initialize invoice2: Product quantity must be positive
+Product No: 1000, Description: Hammer, Price: 5.200000.
+Exception while initialize invoice2: Product quantity must be positive
+Product No: 1000, Description: Hammer, Price: 5.200000, Qty: 99 
+Invoice amount: 514.80
+Exception while initialize p3: Price must be positive
+Exception while set p2: Price must be positive
+Product No: 1000, Description: Hammer, Price: 14.950000, Qty: 100 
+Invoice amount: 1495.00
+Product No: 1001, Description: Brush, Price: 2.300000.
+bash-3.2$ exit
+exit
+
+Script done on Thu Oct 22 18:58:15 2015
