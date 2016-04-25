@@ -10,7 +10,7 @@ int mergeSort(int arr[], int array_size)
 int main(int argv, char** args)
 {
   int arr[] = {2, 4, 1, 3, 5};
-  printf(" Number of inversions are %d \n", mergeSort(arr, 5));
+  printf(" %d \n", mergeSort(arr, 5));
   getchar();
   return 0;
 }
